@@ -248,6 +248,10 @@ const SmartBalanceScheduler: React.FC = () => {
         }
     };
 
+    const handleBackButton = () => {
+        window.history.back();
+    };
+
     const handleAddNoZoneTime = () => {
         setShowNoZoneForm(true);
     };
@@ -432,6 +436,9 @@ const SmartBalanceScheduler: React.FC = () => {
             {isFirstTimeSetup ? (
                 <div className="setup-container">
                     <h2>Welcome to Smart Balance Scheduler</h2>
+                    <button onClick={handleBackButton} className="back-button">
+                        ← Back
+                    </button>
                     <p>Let's set up your schedule preferences to help you maintain a healthy work-life balance.</p>
 
                     <div className="setup-step">
@@ -614,6 +621,11 @@ const SmartBalanceScheduler: React.FC = () => {
                 </div>
             ) : (
                 <div className="calendar-container">
+                    <div className="back-button-container">
+                        <button onClick={handleBackButton} className="back-button">
+                            ← Back
+                        </button>
+                    </div>
                     {isLearningPeriod && (
                         <div className="learning-banner">
                             <div className="learning-icon">📊</div>
@@ -1129,6 +1141,31 @@ const SmartBalanceScheduler: React.FC = () => {
 
         .cancel-button:hover {
           background-color: #757575;
+        }
+
+        .back-button {
+          background-color: #7e57c2;
+          color: white;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 14px;
+          margin-bottom: 20px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }   
+
+        .back-button:hover {
+            background-color: #6a3ab2;
+        }
+
+        .back-button-container {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: flex-start; /* Ensures container aligns contents to the left */
+            width: 100%;
         }
       `}</style>
         </div>
