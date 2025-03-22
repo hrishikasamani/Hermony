@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.tsx'
 import './index.css';  // Tailwind styles
 import './output.css';
-import './app.css';     // Custom styles
+import './App.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
