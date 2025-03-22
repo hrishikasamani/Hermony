@@ -1,7 +1,9 @@
 import React from 'react';
-import { FeatureCard } from './FeatureCard';
+import FeatureCard from './FeatureCard';
 import { CalendarCheckIcon, UsersIcon, NetworkIcon, HeartPulseIcon, TrendingUpIcon } from 'lucide-react';
-export function FeaturesSection() {
+
+const FeaturesSection: React.FC = () => {
+
   const features = [{
     title: 'Smart Balance Scheduler',
     description: 'Integrate work calendars with personal priorities. Get boundary alerts and block off personal time with No-Zone feature.',
@@ -33,7 +35,8 @@ export function FeaturesSection() {
     color: 'bg-blue-50',
     image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'
   }];
-  return <section id="features" className="w-full py-16 md:py-24 px-6 bg-white">
+  return (
+  <section id="features" className="w-full py-16 md:py-24 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
@@ -50,5 +53,8 @@ export function FeaturesSection() {
           {features.map((feature, index) => <FeatureCard key={index} title={feature.title} description={feature.description} icon={feature.icon} color={feature.color} image={feature.image} />)}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 }
+
+export default FeaturesSection;

@@ -1,6 +1,9 @@
 import React from 'react';
-export function CTASection() {
-  return <section className="w-full py-16 md:py-24 px-6">
+
+const CTASection: React.FC = () => {
+
+  return (
+    <section className="w-full py-16 md:py-24 px-6">
       <div className="max-w-5xl mx-auto bg-gradient-to-r from-purple-600 to-teal-500 rounded-3xl overflow-hidden shadow-xl">
         <div className="p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center">
           <div>
@@ -25,5 +28,8 @@ export function CTASection() {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 }
+
+export default CTASection;

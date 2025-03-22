@@ -1,5 +1,7 @@
 import React from 'react';
-export function TestimonialsSection() {
+
+const TestimonialsSection: React.FC = () => {
+
   const testimonials = [{
     quote: 'Hermony helped me find balance between my role as a tech lead and being a mom of two. The mentorship has been invaluable.',
     name: 'Sarah Johnson',
@@ -16,7 +18,9 @@ export function TestimonialsSection() {
     title: 'Product Manager at StartupX',
     image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80'
   }];
-  return <section id="testimonials" className="w-full py-16 md:py-24 px-6 bg-purple-50">
+
+  return (
+    <section id="testimonials" className="w-full py-16 md:py-24 px-6 bg-purple-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
@@ -49,5 +53,8 @@ export function TestimonialsSection() {
             </div>)}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 }
+
+export default TestimonialsSection;

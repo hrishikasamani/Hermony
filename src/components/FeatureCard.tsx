@@ -1,4 +1,5 @@
 import React from 'react';
+
 interface FeatureCardProps {
   title: string;
   description: string;
@@ -6,20 +7,23 @@ interface FeatureCardProps {
   color: string;
   image: string;
 }
-export function FeatureCard({
+
+const FeatureCard = ({
   title,
   description,
   icon,
   color,
   image
-}: FeatureCardProps) {
-  return <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow overflow-hidden flex flex-col h-full">
+}: FeatureCardProps) => {
+
+  return (
+    <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow overflow-hidden flex flex-col h-full">
       <div className="h-48 overflow-hidden">
         <img src={image} alt={title} className="w-full h-full object-cover" />
       </div>
       <div className="p-6 flex-grow">
         <div className={`${color} p-3 inline-flex rounded-xl mb-4`}>{icon}</div>
-        <h3 className="text-xl font-bold text-gray-800 mb-2">{title}</h3>
+        <h3 className="playfair-display-custom text-xl font-bold text-gray-800 mb-2">{title}</h3>
         <p className="text-gray-600">{description}</p>
       </div>
       <div className="p-6 pt-0">
@@ -30,5 +34,8 @@ export function FeatureCard({
           </svg>
         </button>
       </div>
-    </div>;
+    </div>
+  );
 }
+
+export default FeatureCard;

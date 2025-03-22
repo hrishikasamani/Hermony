@@ -1,9 +1,13 @@
 module.exports = {
     content: [
-      './src/**/*.{html,ts,tsx,js,jsx}', // Adjust paths as needed
+      './src/**/*.{html,ts,tsx,js,jsx}',
     ],
     theme: {
-      extend: {},
+      extend: {
+        fontFamily: {
+          playfair: ['"Playfair Display"', 'serif'],
+        },
+      },
     },
     plugins: [],
   };

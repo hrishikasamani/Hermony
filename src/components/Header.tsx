@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-export function Header() {
+
+const Header: React.FC = () => {
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  return <header className="w-full bg-white/80 backdrop-blur-sm py-4 px-6 md:px-10 sticky top-0 z-50 shadow-sm">
+
+  return (
+    <header className="w-full bg-white/80 backdrop-blur-sm py-4 px-6 md:px-10 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <div className="text-purple-600 font-bold text-2xl">
@@ -52,5 +56,8 @@ export function Header() {
             </button>
           </div>
         </div>}
-    </header>;
+    </header>
+  );
 }
+
+export default Header;

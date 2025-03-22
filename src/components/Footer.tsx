@@ -1,6 +1,10 @@
 import React from 'react';
-export function Footer() {
-  return <footer className="w-full bg-gray-50 py-12 px-6">
+
+const Footer: React.FC = () => {
+
+  return (
+
+    <footer className="w-full bg-gray-50 py-12 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div>
@@ -102,5 +106,8 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 }
+
+export default Footer;
