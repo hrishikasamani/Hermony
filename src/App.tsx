@@ -6,7 +6,7 @@ import TestimonialsSection from './components/TestimonialsSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import './index.css';  // Tailwind styles
-import './app.css';     // Custom styles
+import './App.css';     // Custom styles
 
 const App: React.FC = () => {
   return <div className="w-full min-h-screen bg-gradient-to-b from-purple-50 to-white">
