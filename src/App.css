@@ -1,7 +1,6 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -12,10 +11,19 @@
   transition: filter 300ms;
 }
 .logo:hover {
+  cursor: pointer;
   filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.react:hover {
+  cursor: pointer;
   filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.playfair-display-custom {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
 }
 
 @keyframes logo-spin {

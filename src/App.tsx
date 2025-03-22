@@ -1,35 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import Header from './components/Header';
+import HeroSection from './components/HeroSection';
+import FeaturesSection from './components/FeaturesSection';
+import TestimonialsSection from './components/TestimonialsSection';
+import CTASection from './components/CTASection';
+import Footer from './components/Footer';
+import './index.css';  // Tailwind styles
+import './App.css';     // Custom styles
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+const App: React.FC = () => {
+  return <div className="w-full min-h-screen bg-gradient-to-b from-purple-50 to-white">
+      <Header />
+      <main>
+        <HeroSection />
+        <FeaturesSection />
+        <TestimonialsSection />
+        <CTASection />
+      </main>
+      <Footer />
+    </div>;
 }
 
-export default App
+export default App;
