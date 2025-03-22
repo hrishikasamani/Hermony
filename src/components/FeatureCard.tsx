@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface FeatureCardProps {
   title: string;
@@ -6,6 +7,7 @@ interface FeatureCardProps {
   icon: React.ReactNode;
   color: string;
   image: string;
+  link?: string;
 }
 
 const FeatureCard = ({
@@ -13,11 +15,23 @@ const FeatureCard = ({
   description,
   icon,
   color,
-  image
+  image,
+  link
 }: FeatureCardProps) => {
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (link) {
+      navigate(link);
+    }
+  };
+
   return (
-    <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow overflow-hidden flex flex-col h-full">
+    <div 
+      className={`bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow overflow-hidden flex flex-col h-full ${link ? 'cursor-pointer' : ''}`}
+      onClick={handleClick}
+    >
       <div className="h-48 overflow-hidden">
         <img src={image} alt={title} className="w-full h-full object-cover" />
       </div>

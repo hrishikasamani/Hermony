@@ -94,7 +94,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">
-            © 2023 Hermony. All rights reserved.
+            © 2025 Hermony. All rights reserved by Hrishika, Preksha, Dhanshree & Abegail.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-gray-500 hover:text-purple-600 transition-colors">
