@@ -1,7 +1,5 @@
 import React from 'react';
 import { CalendarIcon, Users2Icon, HeartHandshakeIcon } from 'lucide-react';
-import balanceImg from '../assets/balance.png'; // Adjust the path as needed
-
 
 const HeroSection: React.FC = () => {
   return (
