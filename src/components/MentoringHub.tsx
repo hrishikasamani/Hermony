@@ -1,6 +1,6 @@
 import { ArrowLeftIcon, HeartPulseIcon } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface UserProfile {
   id: string;
