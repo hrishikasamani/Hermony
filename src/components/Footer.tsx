@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../assets/logo.png'
 
 const Footer: React.FC = () => {
 
@@ -8,8 +9,8 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div>
-            <div className="text-purple-600 font-bold text-2xl mb-4">
-              Her<span className="text-teal-500">mony</span>
+            <div className="flex justify-center mb-2">
+              <img src={logo} alt="Hermony logo" className="h-12" />
             </div>
             <p className="text-gray-600">
               Empowering women in tech to harmonize their professional and

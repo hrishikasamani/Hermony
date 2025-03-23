@@ -1,17 +1,20 @@
+
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.png'
 
 const Header: React.FC = () => {
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
-    <header className="w-full bg-white/80 backdrop-blur-sm py-4 px-6 md:px-10 sticky top-0 z-50 shadow-sm">
+    <header className="w-full bg-white py-4 px-6 md:px-10 sticky top-0 z-50 shadow-sm ">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <div className="text-purple-600 font-bold text-2xl">
-            Her<span className="text-teal-500">mony</span>
-          </div>
+          <button onClick={() => navigate('/')}>
+          <img src={logo} alt="Hermony logo" className="h-12 ml-2" />
+          </button>
         </div>
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
@@ -37,7 +40,8 @@ const Header: React.FC = () => {
         </button>
       </div>
       {/* Mobile Navigation */}
-      {isMenuOpen && <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-md py-4 px-6">
+      {isMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-md py-4 px-6">
           <div className="flex flex-col space-y-4">
             <a href="#features" className="text-gray-700 hover:text-purple-600 transition-colors">
               Features
@@ -55,7 +59,8 @@ const Header: React.FC = () => {
               Log In
             </button>
           </div>
-        </div>}
+        </div>
+      )}
     </header>
   );
 }
