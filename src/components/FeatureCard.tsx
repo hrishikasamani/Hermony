@@ -8,6 +8,7 @@ interface FeatureCardProps {
   color: string;
   image: string;
   link?: string;
+  onClick?: () => void; // Add onClick prop
 }
 
 const FeatureCard = ({
@@ -16,20 +17,24 @@ const FeatureCard = ({
   icon,
   color,
   image,
-  link
+  link,
+  onClick,
 }: FeatureCardProps) => {
-
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (link) {
-      navigate(link);
+    if (onClick) {
+      onClick(); // Prioritize custom onClick if provided
+    } else if (link) {
+      navigate(link); // Fallback to navigation if no onClick
     }
   };
 
   return (
-    <div 
-      className={`bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow overflow-hidden flex flex-col h-full ${link ? 'cursor-pointer' : ''}`}
+    <div
+      className={`bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow overflow-hidden flex flex-col h-full ${
+        link ? 'cursor-pointer' : ''
+      }`}
       onClick={handleClick}
     >
       <div className="h-48 overflow-hidden">
@@ -50,6 +55,6 @@ const FeatureCard = ({
       </div>
     </div>
   );
-}
+};
 
 export default FeatureCard;

@@ -36,29 +36,35 @@ import WellbeingChatbot from './components/WellbeingChatbot'; // Add this import
 import './index.css';  // Tailwind styles
 import './App.css';     // Custom styles
 import SmartBalanceScheduler from './components/SmartBalanceScheduler';
+import { NetworkingRoadmap } from './components/NetworkingRoadmap';
+import CareerGrowthDashboard from './components/CareerGrowthDashboard';
 import ScheduleAnalytics from './components/ScheduleStats';
 
 // Create a Home component that contains your existing layout
-const Home = () => (
-  <div className="w-full min-h-screen bg-gradient-to-b from-purple-50 to-white">
-    <Header />
-    <main>
-      <HeroSection />
-      <FeaturesSection />
-      <TestimonialsSection />
-      <CTASection />
-    </main>
-    <Footer />
-  </div>
-);
+const Home = () => {
+  return (
+    <div className="w-full min-h-screen bg-gradient-to-b from-purple-50 to-white">
+      <Header />
+      <main>
+        <HeroSection />
+        <FeaturesSection />
+        <TestimonialsSection />
+        <CTASection />
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
 const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home />} />
         <Route path="/wellbeing" element={<WellbeingChatbot />} />
         <Route path="/scheduler" element={<SmartBalanceScheduler />} />
+        <Route path="/networking" element={<NetworkingRoadmap />} />
+        <Route path="/career" element={<CareerGrowthDashboard />} />
         <Route path="/analytics" element={<ScheduleAnalytics />} />
       </Routes>
     </Router>
