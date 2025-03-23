@@ -2,7 +2,6 @@ import React from 'react';
 import { CalendarIcon, Users2Icon, HeartHandshakeIcon } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
-
   return (
     <section className="w-full py-24 md:py-32 px-6">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
@@ -37,20 +36,27 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
         <div className="order-1 md:order-2 flex justify-center">
-          <div className="relative p-8">
-            <div className="absolute top-0 left-0 bg-purple-100 p-4 rounded-2xl shadow-md">
-              <CalendarIcon className="h-8 w-8 text-purple-600" />
-              <p className="font-medium mt-1">Smart Scheduling</p>
+          <div className="space-y-6">
+            <img 
+              src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+              alt="Woman working on laptop" 
+              className="rounded-2xl shadow-xl w-[400px] h-auto object-cover"
+            />
+            <div className="grid grid-cols-3 gap-4">
+              <div className="p-4 rounded-2xl shadow-md flex flex-col items-center text-center hover:bg-purple-100 transition-colors">
+                <Users2Icon className="h-8 w-8" />
+                <p className="font-medium mt-2 text-sm">Community</p>
+              </div>
+              <div className="p-4 rounded-2xl shadow-md flex flex-col items-center text-center hover:bg-purple-100 transition-colors">
+                
+                <HeartHandshakeIcon className="h-8 w-8" />
+                <p className="font-medium mt-2 text-sm">Well-Being</p>
+              </div>
+              <div className="p-4 rounded-2xl shadow-md flex flex-col items-center text-center hover:bg-purple-100 transition-colors">
+                <CalendarIcon className="h-8 w-8" />
+                <p className="font-medium mt-2 text-sm">Smart Scheduling</p>
+              </div>
             </div>
-            <div className="absolute bottom-0 right-0 bg-teal-100 p-4 rounded-2xl shadow-md">
-              <Users2Icon className="h-8 w-8 text-teal-600" />
-              <p className="font-medium mt-1">Mentorship</p>
-            </div>
-            <div className="absolute bottom-0 left-0 bg-amber-100 p-4 rounded-2xl shadow-md">
-              <HeartHandshakeIcon className="h-8 w-8 text-amber-600" />
-              <p className="font-medium mt-1">Community</p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Woman working on laptop" className="rounded-2xl shadow-xl w-[400px] h-auto object-cover z-10 relative" />
           </div>
         </div>
       </div>
