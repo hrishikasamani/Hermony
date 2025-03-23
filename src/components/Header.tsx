@@ -1,17 +1,20 @@
 
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.png'
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
-    <header className="w-full bg-white py-4 px-6 md:px-10 sticky top-0 z-50 shadow-sm">
+    <header className="w-full bg-white py-4 px-6 md:px-10 sticky top-0 z-50 shadow-sm ">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <div className="text-purple-600 font-bold text-2xl">
-            Her<span className="text-black">mony</span>
-          </div>
+          <button onClick={() => navigate('/')}>
+          <img src={logo} alt="Hermony logo" className="h-12 ml-2" />
+          </button>
         </div>
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">

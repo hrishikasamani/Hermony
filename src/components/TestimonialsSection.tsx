@@ -11,7 +11,7 @@ const TestimonialsSection: React.FC = () => {
     quote: 'The smart scheduling feature alone saved my sanity. I finally have guilt-free personal time while still advancing my career.',
     name: 'Michelle Torres',
     title: 'UX Designer at DesignHub',
-    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80'
+    image: 'https://images.unsplash.com/photo-157349701ls9940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80'
   }, {
     quote: 'I found my mentor through Hermony and she helped me navigate my first leadership role while maintaining work-life balance.',
     name: 'Aisha Patel',
@@ -24,7 +24,7 @@ const TestimonialsSection: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-            Women <span className="text-purple-600">Thriving</span> Together
+            Women <span className="text-purple-600 playfair-display-custom italic">Thriving</span> Together
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
             Join thousands of women in tech who have found their perfect balance
