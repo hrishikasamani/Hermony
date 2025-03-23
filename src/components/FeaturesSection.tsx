@@ -5,6 +5,13 @@ import { CalendarCheckIcon, UsersIcon, BarChart3Icon, NetworkIcon, HeartPulseIco
 const FeaturesSection: React.FC = () => {
   
   const features = [{
+    title: 'Well-Being Companion',
+    description: 'Track burnout signs, access self-care resources, and get personalized nudges from Balance Buddy AI.',
+    icon: <HeartPulseIcon className="h-8 w-8 text-purple-500" />,
+    color: 'bg-indigo-50',
+    image: 'https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
+    link: '/wellbeing'
+  },{
     title: 'Smart Balance Scheduler',
     description: 'Integrate work calendars with personal priorities. Get boundary alerts and block off personal time with No-Zone feature.',
     icon: <CalendarCheckIcon className="h-8 w-8 text-purple-500" />,
@@ -19,13 +26,6 @@ const FeaturesSection: React.FC = () => {
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
     link: '/analytics',
     special: true
-  }, {
-    title: 'Well-Being Companion',
-    description: 'Track burnout signs, access self-care resources, and get personalized nudges from Balance Buddy AI.',
-    icon: <HeartPulseIcon className="h-8 w-8 text-purple-500" />,
-    color: 'bg-indigo-50',
-    image: 'https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
-    link: '/wellbeing'
   }, {
     title: 'Peer-to-Peer Mentoring Hub',
     description: 'Get matched with mentors based on skills and life stage. Schedule quick micro-mentoring sessions and join peer circles.',
@@ -52,12 +52,12 @@ const FeaturesSection: React.FC = () => {
   return (
     <section id="features" className="w-full py-16 md:py-24 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+        <div className="text-center mb-16 playfair-display-custom">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 playfair-display-custom">
             Everything You Need to{' '}
             <span className="text-purple-600 playfair-display-custom italic">Thrive</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="mt-4 text-lg playfair-display-custom text-gray-500 max-w-2xl mx-auto">
             Hermony combines smart tools, community support, and mentorship to
             help you succeed professionally without sacrificing personal
             well-being.

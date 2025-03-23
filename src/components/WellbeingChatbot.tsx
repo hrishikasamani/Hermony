@@ -172,7 +172,7 @@ const WellbeingChatbot: React.FC = () => {
           </button>
           <div className="flex items-center">
             <HeartPulseIcon className="h-6 w-6 text-rose-600 mr-2" />
-            <h1 className="text-xl font-bold text-purple-800">Balance Buddy AI</h1>
+            <h1 className="text-xl font-bold text-purple-800 playfair-display-custom">Balance Buddy AI</h1>
           </div>
           <div className="w-24"></div>
         </div>
@@ -185,14 +185,14 @@ const WellbeingChatbot: React.FC = () => {
             <div className="space-y-4 mb-4 max-h-[60vh] overflow-y-auto">
               {messages.map((message) => (
                 <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-xs md:max-w-md p-3 rounded-lg text-justify ${message.sender === 'user' ? 'bg-purple-600 text-white rounded-br-none' : 'bg-purple-50 text-gray-800 rounded-bl-none'}`}>
+                  <div className={`max-w-xs md:max-w-md p-3 rounded-lg text-justify playfair-display-custom ${message.sender === 'user' ? 'bg-purple-600  text-white rounded-br-none' : 'bg-purple-50 text-gray-800 rounded-bl-none'}`}>
                     {message.text}
                   </div>
                 </div>
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-purple-50 text-gray-800 max-w-xs md:max-w-md p-3 rounded-lg rounded-bl-none">
+                  <div className="bg-purple-50 text-gray-800 max-w-xs md:max-w-md p-3 rounded-lg rounded-bl-none playfair-display-custom">
                     <div className="flex space-x-2">
                       <div className="w-2 h-2 rounded-full bg-purple-400 animate-bounce"></div>
                       <div className="w-2 h-2 rounded-full bg-purple-400 animate-bounce" style={{ animationDelay: '0.2s' }}></div>
@@ -210,13 +210,13 @@ const WellbeingChatbot: React.FC = () => {
                   value={input}
                   onChange={handleInputChange}
                   placeholder="Type your message..."
-                  className="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-500"
+                  className="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-500 playfair-display-custom"
                   disabled={isLoading}
                 />
                 <button
                   type="submit"
                   disabled={isLoading || !input.trim()}
-                  className={`ml-2 p-2 rounded-full ${isLoading || !input.trim() ? 'bg-purple-200 text-purple-400' : 'bg-purple-600 text-white hover:bg-purple-700'} transition-colors`}
+                  className={`ml-2 p-2 rounded-full playfair-display-custom ${isLoading || !input.trim() ? 'bg-purple-200 text-purple-400' : 'bg-purple-600 text-white hover:bg-purple-700'} transition-colors`}
                 >
                   <ArrowUpIcon className="h-5 w-5" />
                 </button>
@@ -225,23 +225,23 @@ const WellbeingChatbot: React.FC = () => {
           </div>
 
           <div className="mt-8 bg-white rounded-lg shadow-md p-6 border border-purple-200">
-            <h2 className="text-xl font-bold text-purple-800 mb-4">Wellbeing Resources</h2>
+            <h2 className="text-xl font-bold text-purple-800 mb-4 playfair-display-custom">Wellbeing Resources</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div onClick={() => setModalType('stress')} className="p-4 border border-purple-200 rounded-lg hover:bg-purple-50 cursor-pointer transition-colors">
-                <h3 className="font-medium text-purple-800">Stress Management</h3>
-                <p className="text-sm text-gray-600 mt-1">Quick breathing exercises and grounding techniques</p>
+                <h3 className="font-medium text-purple-800 playfair-display-custom">Stress Management</h3>
+                <p className="text-sm text-gray-600 mt-1 playfair-display-custom">Quick breathing exercises and grounding techniques</p>
               </div>
               <div onClick={() => setModalType('sleep')} className="p-4 border border-purple-200 rounded-lg hover:bg-purple-50 cursor-pointer transition-colors">
-                <h3 className="font-medium text-purple-800">Sleep Better</h3>
-                <p className="text-sm text-gray-600 mt-1">Wind-down routines for better rest</p>
+                <h3 className="font-medium text-purple-800 playfair-display-custom">Sleep Better</h3>
+                <p className="text-sm text-gray-600 mt-1 playfair-display-custom">Wind-down routines for better rest</p>
               </div>
               <div onClick={() => setModalType('mindfulness')} className="p-4 border border-purple-200 rounded-lg hover:bg-purple-50 cursor-pointer transition-colors">
-                <h3 className="font-medium text-purple-800">Mindfulness Practices</h3>
-                <p className="text-sm text-gray-600 mt-1">Short meditations to stay present</p>
+                <h3 className="font-medium text-purple-800 playfair-display-custom">Mindfulness Practices</h3>
+                <p className="text-sm text-gray-600 mt-1 playfair-display-custom">Short meditations to stay present</p>
               </div>
               <div onClick={() => setModalType('worklife')} className="p-4 border border-purple-200 rounded-lg hover:bg-purple-50 cursor-pointer transition-colors">
-                <h3 className="font-medium text-purple-800">Work-Life Balance</h3>
-                <p className="text-sm text-gray-600 mt-1">Tips to reclaim your personal time</p>
+                <h3 className="font-medium text-purple-800 playfair-display-custom">Work-Life Balance</h3>
+                <p className="text-sm text-gray-600 mt-1 playfair-display-custom">Tips to reclaim your personal time</p>
               </div>
             </div>
           </div>
@@ -254,25 +254,25 @@ const WellbeingChatbot: React.FC = () => {
           <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4 border border-purple-200">
             {modalType === 'stress' && (
               <>
-                <h2 className="text-xl font-bold text-purple-800 mb-4">Stress Management</h2>
-                <p className="text-gray-700 mb-4">
+                <h2 className="text-xl font-bold text-purple-800 mb-4 playfair-display-custom">Stress Management</h2>
+                <p className="text-gray-700 mb-4 playfair-display-custom">
                   Feeling stressed? Try this simple breathing exercise: Inhale deeply for 4 seconds, hold for 4 seconds, and exhale for 4 seconds.
                 </p>
                 <div className="text-center">
                   {!isCompleted ? (
                     <>
-                      <p className="text-2xl font-semibold text-purple-600 mb-2">{isTimerRunning ? breathingPhase : 'Ready?'}</p>
-                      <p className="text-gray-700 mb-4">{timer} seconds left</p>
+                      <p className="text-2xl font-semibold text-purple-600 mb-2 playfair-display-custom">{isTimerRunning ? breathingPhase : 'Ready?'}</p>
+                      <p className="text-gray-700 mb-4 playfair-display-custom">{timer} seconds left</p>
                       <button
                         onClick={startTimer}
                         disabled={isTimerRunning}
-                        className={`px-4 py-2 rounded-lg ${isTimerRunning ? 'bg-purple-200 text-purple-400' : 'bg-purple-600 text-white hover:bg-purple-700'} transition-colors`}
+                        className={`px-4 py-2 rounded-lg playfair-display-custom ${isTimerRunning ? 'bg-purple-200 text-purple-400' : 'bg-purple-600 text-white hover:bg-purple-700'} transition-colors`}
                       >
                         {isTimerRunning ? 'Running...' : 'Start 1-Minute Breathing'}
                       </button>
                     </>
                   ) : (
-                    <p className="text-xl font-bold text-purple-800 mb-4">Hooray! You completed a minute towards reducing your stress!</p>
+                    <p className="text-xl font-bold text-purple-800 mb-4 playfair-display-custom">Hooray! You completed a minute towards reducing your stress!</p>
                   )}
                 </div>
               </>
@@ -280,21 +280,21 @@ const WellbeingChatbot: React.FC = () => {
 
             {modalType === 'sleep' && (
               <>
-                <h2 className="text-xl font-bold text-purple-800 mb-4">Sleep Better</h2>
-                <p className="text-gray-700 mb-4">Struggling to sleep? Preview these calming sounds to help you unwind.</p>
+                <h2 className="text-xl font-bold text-purple-800 mb-4 playfair-display-custom">Sleep Better</h2>
+                <p className="text-gray-700 mb-4 playfair-display-custom">Struggling to sleep? Preview these calming sounds to help you unwind.</p>
                 <div className="grid grid-cols-3 gap-3 mb-4">
                   {['Rain', 'Waves', 'Forest'].map(sound => (
                     <button
                       key={sound}
                       onClick={() => playSound(sound)}
                       disabled={selectedSound === sound}
-                      className={`p-3 rounded-lg text-sm font-medium ${selectedSound === sound ? 'bg-purple-600 text-white' : 'bg-purple-100 text-purple-700 hover:bg-purple-200'} transition-colors`}
+                      className={`p-3 rounded-lg text-sm playfair-display-custom font-medium ${selectedSound === sound ? 'bg-purple-600 text-white' : 'bg-purple-100 text-purple-700 hover:bg-purple-200'} transition-colors`}
                     >
                       {selectedSound === sound ? 'Playing...' : sound}
                     </button>
                   ))}
                 </div>
-                <p className="text-gray-600 text-sm italic">
+                <p className="text-gray-600 text-sm italic playfair-display-custom">
                   {selectedSound ? `Now playing: ${selectedSound}` : 'Click a sound to preview...'}
                 </p>
               </>
@@ -302,28 +302,28 @@ const WellbeingChatbot: React.FC = () => {
 
             {modalType === 'mindfulness' && (
               <>
-                <h2 className="text-xl font-bold text-purple-800 mb-4">Mindfulness Practices</h2>
-                <p className="text-gray-700 mb-4">Let’s do a 1-minute body scan meditation. Focus on each part as guided below.</p>
+                <h2 className="text-xl font-bold text-purple-800 mb-4 playfair-display-custom">Mindfulness Practices</h2>
+                <p className="text-gray-700 mb-4 playfair-display-custom">Let’s do a 1-minute body scan meditation. Focus on each part as guided below.</p>
                 <div className="text-center">
                   {!isCompleted ? (
                     <>
-                      <p className="text-lg text-purple-600 mb-2">
+                      <p className="text-lg text-purple-600 mb-2 playfair-display-custom">
                         {isTimerRunning ? (timer > 40 ? 'Focus on your feet...' : timer > 20 ? 'Move to your shoulders...' : 'Now your head...') : 'Ready?'}
                       </p>
                       <div className="w-full bg-purple-200 rounded-full h-2 mb-4">
                         <div className="bg-purple-600 h-2 rounded-full" style={{ width: `${mindfulnessProgress}%` }}></div>
                       </div>
-                      <p className="text-gray-700 mb-4">{timer} seconds left</p>
+                      <p className="text-gray-700 mb-4 playfair-display-custom">{timer} seconds left</p>
                       <button
                         onClick={startTimer}
                         disabled={isTimerRunning}
-                        className={`px-4 py-2 rounded-lg ${isTimerRunning ? 'bg-purple-200 text-purple-400' : 'bg-purple-600 text-white hover:bg-purple-700'} transition-colors`}
+                        className={`px-4 py-2 playfair-display-custom rounded-lg ${isTimerRunning ? 'bg-purple-200 text-purple-400' : 'bg-purple-600 text-white hover:bg-purple-700'} transition-colors`}
                       >
                         {isTimerRunning ? 'Running...' : 'Start 1-Minute Meditation'}
                       </button>
                     </>
                   ) : (
-                    <p className="text-xl font-bold text-purple-800 mb-4">Well done! You completed a mindful minute!</p>
+                    <p className="text-xl font-bold text-purple-800 mb-4 playfair-display-custom">Well done! You completed a mindful minute!</p>
                   )}
                 </div>
               </>
@@ -331,21 +331,21 @@ const WellbeingChatbot: React.FC = () => {
 
             {modalType === 'worklife' && (
               <>
-                <h2 className="text-xl font-bold text-purple-800 mb-4">Work-Life Balance Tips</h2>
+                <h2 className="text-xl font-bold text-purple-800 mb-4 playfair-display-custom">Work-Life Balance Tips</h2>
                 <div className="max-h-96 overflow-y-auto">
-                  <p className="text-gray-700 mb-4">Struggling to separate work from life? Here’s a quick guide:</p>
+                  <p className="text-gray-700 mb-4 playfair-display-custom">Struggling to separate work from life? Here’s a quick guide:</p>
                   <div className="space-y-4">
                     <div className="bg-purple-50 p-4 rounded-lg">
-                      <h3 className="text-lg font-semibold text-purple-800">Set Boundaries</h3>
-                      <p className="text-gray-600 text-sm">Decide on a cut-off time for work (e.g., 6 PM) and stick to it.</p>
+                      <h3 className="text-lg font-semibold text-purple-800 playfair-display-custom">Set Boundaries</h3>
+                      <p className="text-gray-600 text-sm playfair-display-custom">Decide on a cut-off time for work (e.g., 6 PM) and stick to it.</p>
                     </div>
                     <div className="bg-purple-50 p-4 rounded-lg">
-                      <h3 className="text-lg font-semibold text-purple-800">Prioritize Tasks</h3>
-                      <p className="text-gray-600 text-sm">Use the Eisenhower Matrix to focus on what’s urgent and important.</p>
+                      <h3 className="text-lg font-semibold text-purple-800 playfair-display-custom">Prioritize Tasks</h3>
+                      <p className="text-gray-600 text-sm playfair-display-custom">Use the Eisenhower Matrix to focus on what’s urgent and important.</p>
                     </div>
                     <div className="bg-purple-50 p-4 rounded-lg">
-                      <h3 className="text-lg font-semibold text-purple-800">Schedule “Me” Time</h3>
-                      <p className="text-gray-600 text-sm">Block 30 minutes daily for something you love—reading, walking, or relaxing.</p>
+                      <h3 className="text-lg font-semibold text-purple-800 playfair-display-custom">Schedule “Me” Time</h3>
+                      <p className="text-gray-600 text-sm playfair-display-custom">Block 30 minutes daily for something you love—reading, walking, or relaxing.</p>
                     </div>
                   </div>
                 </div>
@@ -354,7 +354,7 @@ const WellbeingChatbot: React.FC = () => {
 
             <button
               onClick={closeModal}
-              className="mt-4 w-full px-4 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors"
+              className="mt-4 w-full px-4 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors playfair-display-custom"
             >
               Close
             </button>
