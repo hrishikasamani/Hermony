@@ -29,7 +29,7 @@ interface Post {
 
 export const NetworkingRoadmap: React.FC = () => {
   // State for Opportunity Feed
-  const [opportunities, setOpportunities] = useState<Opportunity[]>([
+  const [opportunities] = useState<Opportunity[]>([
     {
       id: 1,
       title: 'UX Workshop',
@@ -59,7 +59,7 @@ export const NetworkingRoadmap: React.FC = () => {
   const [selectedOpportunity, setSelectedOpportunity] = useState<Opportunity | null>(null);
 
   // State for Coffee Chats
-  const [chats, setChats] = useState<Chat[]>([
+  const [chats] = useState<Chat[]>([
     {
       id: 1,
       title: 'Chat with Priya, AI Dev',
