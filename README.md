@@ -30,11 +30,6 @@ Hermony addresses these challenges through an integrated platform that combines:
 - **APIs**: Google Calendar API, Dialogflow (for Balance Buddy AI)
 - **Analytics**: Custom dashboard for Burnout Tracker visualization
 
-## 📎 Submission Links
-
-- **Video Demo**: [Link to video demo](https://example.com/demo)
-- **GitHub Repository**: [https://github.com/byte-bosses/hermony](https://github.com/byte-bosses/hermony)
-
 ## ⚠ Additional Information
 
 ### Challenges Faced
@@ -55,7 +50,7 @@ Hermony addresses these challenges through an integrated platform that combines:
 - We used ChatGPT and Claude AI to brainstorm feature  ideas and development of the application
 
 ### Presentation Link
-- [Final Presentation](https://example.com/presentation)
+- [Final Presentation](https://www.canva.com/design/DAGiYwYLXFE/1O8Oj5p1N0bIWN770rp-Lw/edit)
 
 ## ✨ Key Features
 
