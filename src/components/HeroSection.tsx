@@ -1,5 +1,7 @@
 import React from 'react';
 import { CalendarIcon, Users2Icon, HeartHandshakeIcon } from 'lucide-react';
+import balanceImg from '../assets/balance.png'; // Adjust the path as needed
+
 
 const HeroSection: React.FC = () => {
   return (
@@ -7,7 +9,7 @@ const HeroSection: React.FC = () => {
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         <div className="order-2 md:order-1">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
-            Find Your Perfect <span className="text-purple-600">Balance</span>{' '}
+            Find Your Perfect <span className="text-purple-600 playfair-display-custom italic">Balance</span>{' '}
             in Tech
           </h1>
           <p className="mt-6 text-lg md:text-xl text-gray-600">
