@@ -35,6 +35,7 @@ import Footer from './components/Footer';
 import WellbeingChatbot from './components/WellbeingChatbot'; // Add this import
 import './index.css';  // Tailwind styles
 import './App.css';     // Custom styles
+import SmartBalanceScheduler from './components/SmartBalanceScheduler';
 
 // Create a Home component that contains your existing layout
 const Home = () => (
@@ -56,6 +57,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/wellbeing" element={<WellbeingChatbot />} />
+        <Route path="/scheduler" element={<SmartBalanceScheduler />} />
       </Routes>
     </Router>
   );
