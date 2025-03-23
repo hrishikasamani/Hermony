@@ -420,7 +420,7 @@ const SmartBalanceScheduler: React.FC = () => {
 
                     <div className="mb-8 pb-5 border-b border-gray-200">
                         <h3 className="text-xl font-semibold text-purple-700 mb-3 playfair-display-custom">Step 2: Set Your Work Hours</h3>
-                        <div className="flex gap-5">
+                        <div className="flex gap-5 justify-center">
                             <div>
                                 <label className="block mb-1 playfair-display-custom">Start Time:</label>
                                 <input type="time" value={preferences.workHours.start} onChange={(e) => setPreferences({ ...preferences, workHours: { ...preferences.workHours, start: e.target.value } })} className="border border-gray-300 rounded p-2" />
@@ -497,6 +497,7 @@ const SmartBalanceScheduler: React.FC = () => {
                             <input type="number" value={preferences.maxMeetingsPerDay} onChange={(e) => setPreferences({ ...preferences, maxMeetingsPerDay: parseInt(e.target.value) })} min="1" max="15" className="border border-gray-300 rounded p-2" />
                         </div>
                         <div className="mb-3 flex items-center justify-center gap-3">
+                        <label className="w-64 playfair-display-custom">Minimum break duration (minutes):</label>
                             <input type="number" value={preferences.minBreakDuration} onChange={(e) => setPreferences({ ...preferences, minBreakDuration: parseInt(e.target.value) })} min="5" max="60" step="5" className="border border-gray-300 rounded p-2" />
                         </div>
                     </div>

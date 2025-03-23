@@ -44,11 +44,18 @@ const WellbeingChatbot: React.FC = () => {
     if (isTimerRunning && timer > 0) {
       interval = setInterval(() => {
         setTimer(prev => {
-          const newTimer = prev - 1;
-          // rest of your timer logic
-          return newTimer;
-        });
-      }, 1000);
+            const newTimer = prev - 1;
+            if (modalType === 'stress') {
+              const seconds = newTimer % 12;
+              if (seconds >= 8) setBreathingPhase('Inhale');
+              else if (seconds >= 4) setBreathingPhase('Hold');
+              else setBreathingPhase('Exhale');
+            } else if (modalType === 'mindfulness') {
+              setMindfulnessProgress((60 - newTimer) * (100 / 60));
+            }
+            return newTimer;
+          });
+        }, 1000);
     } else if (timer === 0) {
       setIsTimerRunning(false);
       setIsCompleted(true);
