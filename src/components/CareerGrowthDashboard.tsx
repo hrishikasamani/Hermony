@@ -247,7 +247,7 @@ const CareerGrowthDashboard: React.FC = () => {
   }, [showConfetti]);
 
   return (
-    <div className="py-16 bg-gradient-to-b from-purple-50 to-white min-h-screen">
+    <div className="pb-10 bg-gradient-to-b from-purple-50 to-white min-h-screen">
       {showConfetti && (
         <Confetti
           width={window.innerWidth}
@@ -256,29 +256,30 @@ const CareerGrowthDashboard: React.FC = () => {
           numberOfPieces={200}
         />
       )}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="">
         <header className="bg-purple-100 shadow-sm py-4 px-6">
-          <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
             <button onClick={() => navigate('/')} className="flex items-center playfair-display-custom text-purple-700 hover:text-purple-900">
               <ArrowLeftIcon className="h-5 w-5 mr-2" />
               <span>Back to Home</span>
             </button>
             <div className="flex items-center">
               <HeartPulseIcon className="h-6 w-6 text-rose-600 mr-2" />
-              <h1 className="text-xl font-bold text-purple-800 playfair-display-custom">Networking</h1>
+              <h1 className="text-xl font-bold text-purple-800 playfair-display-custom">Career Growth Dashboard</h1>
             </div>
             <div className="w-24"></div>
           </div>
         </header>
 
         {/* Page Header */}
-        <h2 className="text-4xl playfair-display-custom font-bold text-gray-900 text-center">
+        {/* <h2 className="text-4xl playfair-display-custom font-bold text-gray-900 text-center">
           Career Growth Dashboard
-        </h2>
+        </h2> */}
         <p className="mt-4 text-lg playfair-display-custom text-gray-600 text-center max-w-2xl mx-auto">
           Track your skills, certifications, and goals while balancing career growth with well-being.
         </p>
 
+        <div className='px-8'>
         {/* Progress Overview Section */}
         <div className="mt-12 bg-white p-6 rounded-xl shadow-md border border-gray-100">
           <h3 className="text-2xl font-semibold playfair-display-custom text-gray-900 mb-4">Progress Overview</h3>
@@ -573,6 +574,8 @@ const CareerGrowthDashboard: React.FC = () => {
             ))}
           </div>
         </div>
+        </div>
+
       </div>
 
       {/* Add/Edit Item Modal */}

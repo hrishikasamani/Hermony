@@ -373,7 +373,7 @@ const SmartBalanceScheduler: React.FC = () => {
     };
 
     return (
-        <div className="max-w-7xl mx-auto p-5 font-sans">
+        <div className="max-w-7xl mx-auto p-0 font-sans">
             <header className="bg-purple-100 shadow-sm py-4 px-6">
                 <div className="max-w-4xl mx-auto flex items-center justify-between">
                     <button onClick={() => navigate('/')} className="flex items-center text-purple-700 hover:text-purple-900">
@@ -382,7 +382,7 @@ const SmartBalanceScheduler: React.FC = () => {
                     </button>
                     <div className="flex items-center">
                         <HeartPulseIcon className="h-6 w-6 text-rose-600 mr-2" />
-                        <h1 className="text-xl font-bold text-purple-800">Balance Scheduler</h1>
+                        <h1 className="text-xl font-bold text-purple-800">Smart Balance Scheduler</h1>
                     </div>
                     <div className="w-24"></div>
                 </div>

@@ -215,7 +215,7 @@ const MentoringHub: React.FC = () => {
   }, [currentUser]);
 
   return (
-    <div className="py-16 bg-gradient-to-b from-purple-50 to-white min-h-screen">
+    <div className="pb-10 bg-gradient-to-b from-purple-50 to-white min-h-screen">
       <header className="bg-purple-100 shadow-sm py-4 px-6">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <button onClick={() => navigate('/')} className="flex items-center playfair-display-custom text-purple-700 hover:text-purple-900">
@@ -224,7 +224,7 @@ const MentoringHub: React.FC = () => {
           </button>
           <div className="flex items-center">
             <HeartPulseIcon className="h-6 w-6 text-rose-600 mr-2" />
-            <h1 className="text-xl font-bold text-purple-800 playfair-display-custom">Mentoring Hub</h1>
+            <h1 className="text-xl font-bold text-purple-800 playfair-display-custom">Peer-to-Peer Mentoring Hub</h1>
           </div>
           <div className="w-24"></div>
         </div>
@@ -232,9 +232,9 @@ const MentoringHub: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Page Header */}
-        <h2 className="text-4xl font-bold text-gray-900 text-center playfair-display-custom">
+        {/* <h2 className="text-4xl font-bold text-gray-900 text-center playfair-display-custom">
           Peer-to-Peer Mentoring Hub
-        </h2>
+        </h2> */}
         <p className="mt-4 text-lg text-gray-600 text-center max-w-2xl mx-auto playfair-display-custom">
           Connect with mentors or mentees for quick 15-minute virtual chats, matched by skills, goals, and life stage.
         </p>

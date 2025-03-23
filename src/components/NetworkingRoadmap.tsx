@@ -204,7 +204,7 @@ export const NetworkingRoadmap: React.FC = () => {
   };
 
   return (
-    <div className="py-12 bg-gray-100 min-h-screen">
+    <div className="pb-10 bg-gray-100 min-h-screen">
       <header className="bg-purple-100 shadow-sm py-4 px-6">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <button onClick={() => navigate('/')} className="flex items-center playfair-display-custom text-purple-700 hover:text-purple-900">
@@ -213,7 +213,7 @@ export const NetworkingRoadmap: React.FC = () => {
           </button>
           <div className="flex items-center">
             <HeartPulseIcon className="h-6 w-6 text-rose-600 mr-2" />
-            <h1 className="text-xl font-bold text-purple-800 playfair-display-custom">Networking</h1>
+            <h1 className="text-xl font-bold text-purple-800 playfair-display-custom">Networking Made Simple</h1>
           </div>
           <div className="w-24"></div>
         </div>
@@ -222,9 +222,9 @@ export const NetworkingRoadmap: React.FC = () => {
 
 
         {/* Page Header */}
-        <h2 className="text-3xl font-bold text-gray-900 text-center playfair-display-custom">
+        {/* <h2 className="text-3xl font-bold text-gray-900 text-center playfair-display-custom">
           Networking Made Simple
-        </h2>
+        </h2> */}
         <p className="mt-4 text-lg text-gray-600 text-center playfair-display-custom">
           Connect with a vibrant community of women in tech through opportunities, chats, and forums.
         </p>
