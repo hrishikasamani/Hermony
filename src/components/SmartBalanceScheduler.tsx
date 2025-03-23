@@ -47,7 +47,7 @@ const SmartBalanceScheduler: React.FC = () => {
     const [isFirstTimeSetup, setIsFirstTimeSetup] = useState<boolean>(true);
     const [isCalendarConnected, setIsCalendarConnected] = useState<boolean>(false);
     const [isLearningPeriod, setIsLearningPeriod] = useState<boolean>(false);
-    const [learningDaysLeft, setLearningDaysLeft] = useState<number>(14);
+    const [_learningDaysLeft, setLearningDaysLeft] = useState<number>(14);
     const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
     const [showEventDetails, setShowEventDetails] = useState(false);
     const [showNoZoneForm, setShowNoZoneForm] = useState(false);
@@ -168,7 +168,7 @@ const SmartBalanceScheduler: React.FC = () => {
         }
     };
 
-    const handleBackButton = () => window.history.back();
+    // const handleBackButton = () => window.history.back();
     const handleAddNoZoneTime = () => setShowNoZoneForm(true);
 
     const saveNoZoneTime = () => {
