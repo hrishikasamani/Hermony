@@ -126,8 +126,8 @@ const ScheduleAnalytics: React.FC = () => {
   const [stats, setStats] = useState<ScheduleAnalytics | null>(null);
   const [timeframe, setTimeframe] = useState<'week' | 'month'>('week');
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [showFocusTime, setShowFocusTime] = useState<boolean>(true);
-  const [showNotifications, setShowNotifications] = useState<boolean>(true);
+  const [showFocusTime] = useState<boolean>(true);
+  const [showNotifications] = useState<boolean>(true);
   const navigate = useNavigate();
 
   useEffect(() => {
