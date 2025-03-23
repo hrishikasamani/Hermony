@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, User } from 'lucide-react';
+import { Menu, X, User, ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { auth } from '../firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, User as FirebaseUser } from '@firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, User as FirebaseUser, updateProfile } from '@firebase/auth';
+
+interface UserProfile {
+  firstName: string;
+  lastName: string;
+}
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,12 +18,26 @@ const Header: React.FC = () => {
   const [_password, setPassword] = useState('');
   const [_error, setError] = useState<string | null>(null);
   const [user, setUser] = useState<FirebaseUser | null>(null);
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
   // Listen for auth state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      
+      if (currentUser) {
+        // Parse displayName to get firstName and lastName
+        const displayName = currentUser.displayName || '';
+        const nameParts = displayName.split(' ');
+        setUserProfile({
+          firstName: nameParts[0] || '',
+          lastName: nameParts.slice(1).join(' ') || ''
+        });
+      } else {
+        setUserProfile(null);
+      }
     });
     
     // Cleanup subscription on unmount
@@ -42,7 +61,8 @@ const Header: React.FC = () => {
     try {
       await signInWithEmailAndPassword(auth, formEmail, formPassword);
       resetForm();
-      navigate('/');
+      // Reload the page to ensure user data is properly displayed
+      window.location.reload();
       return true;
     } catch (err: any) {
       return false;
@@ -50,19 +70,27 @@ const Header: React.FC = () => {
   };
 
   // Handle Signup
-  const handleSignup = async (formEmail: string, formPassword: string) => {
+  const handleSignup = async (formEmail: string, formPassword: string, firstName: string, lastName: string) => {
     if (!validatePassword(formPassword)) {
       return false;
     }
     
     try {
-      await createUserWithEmailAndPassword(auth, formEmail, formPassword);
+      const userCredential = await createUserWithEmailAndPassword(auth, formEmail, formPassword);
+      
+      // Update user profile with first and last name
+      await updateProfile(userCredential.user, {
+        displayName: `${firstName} ${lastName}`
+      });
+      
       resetForm();
-      // Open login modal after successful signup
-      setIsLoginOpen(true);
-      navigate('/');
+      // Reload the page to ensure user data is properly displayed
+      window.location.reload();
       return true;
     } catch (err: any) {
+      if (err.code === 'auth/email-already-in-use') {
+        return { error: 'email-in-use' };
+      }
       return false;
     }
   };
@@ -71,9 +99,18 @@ const Header: React.FC = () => {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
+      setIsDropdownOpen(false);
+      // Reload the page after sign out
+      window.location.reload();
     } catch (err) {
       console.error('Error signing out', err);
     }
+  };
+
+  // Navigate to account page
+  const handleNavigateToAccount = () => {
+    navigate('/account');
+    setIsDropdownOpen(false);
   };
 
   // Reset form state
@@ -85,21 +122,29 @@ const Header: React.FC = () => {
     setError(null);
   };
 
-  // Modal with its own local state to prevent parent re-renders
-  const Modal: React.FC<{
+  // Toggle between login and signup
+  const toggleAuthModals = () => {
+    if (isLoginOpen) {
+      setIsLoginOpen(false);
+      setIsSignupOpen(true);
+    } else if (isSignupOpen) {
+      setIsSignupOpen(false);
+      setIsLoginOpen(true);
+    }
+  };
+
+  // Login Modal Component
+  const LoginModal: React.FC<{
     isOpen: boolean;
     onClose: () => void;
-    title: string;
-    onSubmit: (email: string, password: string) => Promise<boolean>;
-  }> = ({ isOpen, onClose, title, onSubmit }) => {
-    // Local state for the modal - independent from parent component
+    toggleToSignup: () => void;
+  }> = ({ isOpen, onClose, toggleToSignup }) => {
     const [localEmail, setLocalEmail] = useState('');
     const [localPassword, setLocalPassword] = useState('');
     const [passwordError, setPasswordError] = useState<string | null>(null);
     const [localError, setLocalError] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Reset local state when modal opens/closes
     useEffect(() => {
       if (isOpen) {
         setLocalEmail('');
@@ -110,7 +155,6 @@ const Header: React.FC = () => {
       }
     }, [isOpen]);
 
-    // Local password validation
     const validateLocalPassword = (value: string) => {
       if (value.length < 6) {
         setPasswordError('Password must be at least 6 characters');
@@ -120,7 +164,6 @@ const Header: React.FC = () => {
       return true;
     };
 
-    // Handle form submission
     const handleFormSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       
@@ -131,14 +174,10 @@ const Header: React.FC = () => {
       setIsSubmitting(true);
       
       try {
-        const success = await onSubmit(localEmail, localPassword);
+        const success = await handleLogin(localEmail, localPassword);
         
         if (!success) {
-          if (title === "Log In") {
-            setLocalError('Invalid email or password. Please try again.');
-          } else {
-            setLocalError('Failed to create account. Email may already be in use.');
-          }
+          setLocalError('Invalid email or password. Please try again.');
         }
       } catch (error) {
         setLocalError('An unexpected error occurred. Please try again.');
@@ -151,12 +190,10 @@ const Header: React.FC = () => {
 
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center">
-        {/* Backdrop with blur */}
         <div
           className="absolute inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm"
           onClick={onClose}
         />
-        {/* Modal */}
         <div className="relative bg-white rounded-lg shadow-lg p-6 w-full max-w-md mx-4">
           <button
             className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
@@ -165,7 +202,7 @@ const Header: React.FC = () => {
           >
             <X size={24} />
           </button>
-          <h2 className="text-2xl font-bold text-purple-700 mb-4">{title}</h2>
+          <h2 className="text-2xl font-bold text-purple-700 mb-4">Log In</h2>
           <form onSubmit={handleFormSubmit}>
             <div className="mb-4">
               <label className="block text-gray-700 mb-1">Email</label>
@@ -206,11 +243,200 @@ const Header: React.FC = () => {
             {localError && <p className="text-red-500 text-sm mb-4">{localError}</p>}
             <button
               type="submit"
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-full transition-colors"
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-full transition-colors mb-4"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Processing...' : title}
+              {isSubmitting ? 'Processing...' : 'Log In'}
             </button>
+            <p className="text-center text-gray-600 text-sm">
+              Don't have an account?{' '}
+              <button
+                type="button"
+                onClick={toggleToSignup}
+                className="text-purple-600 hover:underline focus:outline-none"
+                disabled={isSubmitting}
+              >
+                Sign Up
+              </button>
+            </p>
+          </form>
+        </div>
+      </div>
+    );
+  };
+
+  // Signup Modal Component
+  const SignupModal: React.FC<{
+    isOpen: boolean;
+    onClose: () => void;
+    toggleToLogin: () => void;
+  }> = ({ isOpen, onClose, toggleToLogin }) => {
+    const [localFirstName, setLocalFirstName] = useState('');
+    const [localLastName, setLocalLastName] = useState('');
+    const [localEmail, setLocalEmail] = useState('');
+    const [localPassword, setLocalPassword] = useState('');
+    const [passwordError, setPasswordError] = useState<string | null>(null);
+    const [localError, setLocalError] = useState<string | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+      if (isOpen) {
+        setLocalFirstName('');
+        setLocalLastName('');
+        setLocalEmail('');
+        setLocalPassword('');
+        setPasswordError(null);
+        setLocalError(null);
+        setIsSubmitting(false);
+      }
+    }, [isOpen]);
+
+    const validateLocalPassword = (value: string) => {
+      if (value.length < 6) {
+        setPasswordError('Password must be at least 6 characters');
+        return false;
+      }
+      setPasswordError(null);
+      return true;
+    };
+
+    const handleFormSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      
+      if (!validateLocalPassword(localPassword)) {
+        return;
+      }
+      
+      setIsSubmitting(true);
+      
+      try {
+        const result = await handleSignup(localEmail, localPassword, localFirstName, localLastName);
+        
+        if (result === false) {
+          setLocalError('Failed to create account. Please try again.');
+        } else if (result && typeof result === 'object' && result.error === 'email-in-use') {
+          setLocalError('Email is already in use. Sign in?');
+        }
+      } catch (error) {
+        setLocalError('An unexpected error occurred. Please try again.');
+      } finally {
+        setIsSubmitting(false);
+      }
+    };
+
+    if (!isOpen) return null;
+
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div
+          className="absolute inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm"
+          onClick={onClose}
+        />
+        <div className="relative bg-white rounded-lg shadow-lg p-6 w-full max-w-md mx-4">
+          <button
+            className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
+            onClick={onClose}
+            disabled={isSubmitting}
+          >
+            <X size={24} />
+          </button>
+          <h2 className="text-2xl font-bold text-purple-700 mb-4">Sign Up</h2>
+          <form onSubmit={handleFormSubmit}>
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <div>
+                <label className="block text-gray-700 mb-1">First Name</label>
+                <input
+                  type="text"
+                  value={localFirstName}
+                  onChange={(e) => setLocalFirstName(e.target.value)}
+                  className="w-full p-2 border border-purple-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  placeholder="First name"
+                  required
+                  disabled={isSubmitting}
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 mb-1">Last Name</label>
+                <input
+                  type="text"
+                  value={localLastName}
+                  onChange={(e) => setLocalLastName(e.target.value)}
+                  className="w-full p-2 border border-purple-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  placeholder="Last name"
+                  required
+                  disabled={isSubmitting}
+                />
+              </div>
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-1">Email</label>
+              <input
+                type="email"
+                value={localEmail}
+                onChange={(e) => setLocalEmail(e.target.value)}
+                className="w-full p-2 border border-purple-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+                placeholder="Enter your email"
+                required
+                disabled={isSubmitting}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-1">Password</label>
+              <input
+                type="password"
+                value={localPassword}
+                onChange={(e) => {
+                  setLocalPassword(e.target.value);
+                  if (e.target.value.length > 0) {
+                    validateLocalPassword(e.target.value);
+                  } else {
+                    setPasswordError(null);
+                  }
+                }}
+                className={`w-full p-2 border ${
+                  passwordError ? 'border-red-500' : 'border-purple-300'
+                } rounded focus:outline-none focus:ring-2 focus:ring-purple-500`}
+                placeholder="Enter your password"
+                required
+                disabled={isSubmitting}
+              />
+              {passwordError && (
+                <p className="text-red-500 text-sm mt-1">{passwordError}</p>
+              )}
+            </div>
+            {localError && (
+              <div className="text-red-500 text-sm mb-4">
+                {localError}
+                {localError.includes('Email is already in use') && (
+                  <button
+                    type="button"
+                    onClick={toggleToLogin}
+                    className="ml-1 text-purple-600 hover:underline focus:outline-none"
+                    disabled={isSubmitting}
+                  >
+                    Sign in
+                  </button>
+                )}
+              </div>
+            )}
+            <button
+              type="submit"
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-full transition-colors mb-4"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Processing...' : 'Sign Up'}
+            </button>
+            <p className="text-center text-gray-600 text-sm">
+              Already have an account?{' '}
+              <button
+                type="button"
+                onClick={toggleToLogin}
+                className="text-purple-600 hover:underline focus:outline-none"
+                disabled={isSubmitting}
+              >
+                Log In
+              </button>
+            </p>
           </form>
         </div>
       </div>
@@ -235,16 +461,37 @@ const Header: React.FC = () => {
           </a>
           
           {user ? (
-            <div className="flex items-center space-x-4">
+            <div className="relative flex items-center space-x-4">
               <button
-                onClick={handleSignOut}
-                className="border border-purple-600 text-purple-600 px-6 py-2 rounded-full hover:bg-purple-50 transition-colors"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="flex items-center space-x-2 text-gray-800 hover:text-purple-600"
               >
-                Sign Out
+                <span>Hi, {userProfile?.firstName || ''}</span>
+                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600">
+                  <User size={20} />
+                </div>
+                <ChevronDown size={16} />
               </button>
-              <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600">
-                <User size={20} />
-              </div>
+              
+              {/* User dropdown menu */}
+              {isDropdownOpen && (
+                <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+                  <div className="py-1">
+                    <button
+                      onClick={handleNavigateToAccount}
+                      className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600"
+                    >
+                      Account
+                    </button>
+                    <button
+                      onClick={handleSignOut}
+                      className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           ) : (
             <>
@@ -280,16 +527,25 @@ const Header: React.FC = () => {
             </a>
             
             {user ? (
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col space-y-2">
+                <div className="flex items-center space-x-2 text-gray-800">
+                  <span>Hi, {userProfile?.firstName || ''}</span>
+                  <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600">
+                    <User size={20} />
+                  </div>
+                </div>
+                <button
+                  onClick={handleNavigateToAccount}
+                  className="text-left text-gray-700 hover:text-purple-600 transition-colors"
+                >
+                  Account
+                </button>
                 <button
                   onClick={handleSignOut}
-                  className="border border-purple-600 text-purple-600 px-6 py-2 rounded-full hover:bg-purple-50 transition-colors"
+                  className="text-left text-gray-700 hover:text-purple-600 transition-colors"
                 >
                   Sign Out
                 </button>
-                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600">
-                  <User size={20} />
-                </div>
               </div>
             ) : (
               <>
@@ -310,18 +566,16 @@ const Header: React.FC = () => {
           </div>
         </div>
       )}
-      {/* Modals */}
-      <Modal
+      {/* Auth Modals */}
+      <LoginModal
         isOpen={isLoginOpen}
         onClose={resetForm}
-        title="Log In"
-        onSubmit={handleLogin}
+        toggleToSignup={toggleAuthModals}
       />
-      <Modal
+      <SignupModal
         isOpen={isSignupOpen}
         onClose={resetForm}
-        title="Sign Up"
-        onSubmit={handleSignup}
+        toggleToLogin={toggleAuthModals}
       />
     </header>
   );
