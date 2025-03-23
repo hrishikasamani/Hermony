@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Confetti from 'react-confetti';
+import { ArrowLeftIcon, HeartPulseIcon } from 'lucide-react';
 
 interface Skill {
   id: string;
@@ -85,6 +86,7 @@ const CareerGrowthDashboard: React.FC = () => {
   const [modalItemId, setModalItemId] = useState<string | null>(null);
   const [modalItemName, setModalItemName] = useState('');
   const [modalItemLevel, setModalItemLevel] = useState<number>(0);
+  const navigate = useNavigate();
 
   // State for Confetti Animation
   const [showConfetti, setShowConfetti] = useState(false);
@@ -255,18 +257,19 @@ const CareerGrowthDashboard: React.FC = () => {
         />
       )}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back to Home Link */}
-        <div className="mb-8">
-          <Link
-            to="/"
-            className="text-purple-600 font-medium hover:text-purple-800 transition-colors flex items-center"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
-            </svg>
-            Back to Home
-          </Link>
-        </div>
+        <header className="bg-purple-100 shadow-sm py-4 px-6">
+          <div className="max-w-4xl mx-auto flex items-center justify-between">
+            <button onClick={() => navigate('/')} className="flex items-center text-purple-700 hover:text-purple-900">
+              <ArrowLeftIcon className="h-5 w-5 mr-2" />
+              <span>Back to Home</span>
+            </button>
+            <div className="flex items-center">
+              <HeartPulseIcon className="h-6 w-6 text-rose-600 mr-2" />
+              <h1 className="text-xl font-bold text-purple-800">Networking</h1>
+            </div>
+            <div className="w-24"></div>
+          </div>
+        </header>
 
         {/* Page Header */}
         <h2 className="text-4xl font-bold text-gray-900 text-center">
@@ -458,11 +461,10 @@ const CareerGrowthDashboard: React.FC = () => {
                 </p>
                 <button
                   onClick={() => handleToggleCertification(cert.id)}
-                  className={`px-4 py-2 rounded-md transition-colors ${
-                    cert.completed
+                  className={`px-4 py-2 rounded-md transition-colors ${cert.completed
                       ? 'bg-purple-200 text-purple-800 hover:bg-purple-300'
                       : 'bg-purple-600 text-white hover:bg-purple-700'
-                  }`}
+                    }`}
                 >
                   {cert.completed ? 'Mark as Incomplete' : 'Mark as Completed'}
                 </button>
@@ -531,11 +533,10 @@ const CareerGrowthDashboard: React.FC = () => {
                 </p>
                 <button
                   onClick={() => handleToggleGoal(goal.id)}
-                  className={`px-4 py-2 rounded-md transition-colors ${
-                    goal.completed
+                  className={`px-4 py-2 rounded-md transition-colors ${goal.completed
                       ? 'bg-purple-200 text-purple-800 hover:bg-purple-300'
                       : 'bg-purple-600 text-white hover:bg-purple-700'
-                  }`}
+                    }`}
                 >
                   {goal.completed ? 'Mark as Incomplete' : 'Mark as Completed'}
                 </button>
@@ -559,9 +560,8 @@ const CareerGrowthDashboard: React.FC = () => {
                 </div>
                 <p className="text-gray-600 mb-4">{rec.description}</p>
                 <span
-                  className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
-                    rec.type === 'resource' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'
-                  }`}
+                  className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${rec.type === 'resource' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'
+                    }`}
                 >
                   {rec.type === 'resource' ? 'Resource' : 'Well-Being Step'}
                 </span>
