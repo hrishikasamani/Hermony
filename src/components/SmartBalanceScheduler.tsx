@@ -374,7 +374,7 @@ const SmartBalanceScheduler: React.FC = () => {
             <ToastContainer position="top-right" autoClose={5000} toastClassName="rounded-lg shadow-md" progressClassName="bg-purple-600" />
 
             {isFirstTimeSetup ? (
-                <div className="bg-white rounded-lg p-6 shadow-md">
+                <div className="bg-white rounded-lg p-6 shadow-md text-center">
                     {/* <button onClick={handleBackButton} className="bg-purple-600 text-white px-4 py-2 rounded mb-5 flex items-center gap-2 hover:bg-purple-700">← Back</button> */}
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         {/* Back to Home Link */}
@@ -403,7 +403,7 @@ const SmartBalanceScheduler: React.FC = () => {
 
                     <div className="mb-8 pb-5 border-b border-gray-200">
                         <h3 className="text-xl font-semibold text-purple-700 mb-3">Step 2: Set Your Work Hours</h3>
-                        <div className="flex gap-5">
+                        <div className="flex gap-5 justify-center">
                             <div>
                                 <label className="block mb-1">Start Time:</label>
                                 <input type="time" value={preferences.workHours.start} onChange={(e) => setPreferences({ ...preferences, workHours: { ...preferences.workHours, start: e.target.value } })} className="border border-gray-300 rounded p-2" />
@@ -451,9 +451,18 @@ const SmartBalanceScheduler: React.FC = () => {
 
                         <div className="mt-3">
                             {preferences.noZoneTimes.map(zone => (
-                                <div key={zone.id} className="flex justify-between items-center p-2 bg-purple-50 rounded mb-2">
-                                    <span>{['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][zone.dayOfWeek]}: {zone.start} - {zone.end} {zone.recurring ? '(recurring)' : ''}</span>
-                                    <button onClick={() => setPreferences({ ...preferences, noZoneTimes: preferences.noZoneTimes.filter(z => z.id !== zone.id) })} className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Remove</button>
+                                <div key={zone.id} className="p-2 bg-purple-50 rounded mb-2 mx-auto w-3/5 flex justify-between items-center">
+                                    <div className="text-left">
+                                        {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][zone.dayOfWeek]}: {zone.start} - {zone.end} {zone.recurring ? '(recurring)' : ''}
+                                    </div>
+                                    <div
+                                        onClick={() => setPreferences({ ...preferences, noZoneTimes: preferences.noZoneTimes.filter(z => z.id !== zone.id) })}
+                                        className="cursor-pointer text-red-500 hover:text-red-700"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -461,15 +470,15 @@ const SmartBalanceScheduler: React.FC = () => {
 
                     <div className="mb-8 pb-5 border-b border-gray-200">
                         <h3 className="text-xl font-semibold text-purple-700 mb-3">Step 4: Set Balance Preferences</h3>
-                        <div className="mb-3 flex items-center gap-3">
+                        <div className="mb-3 flex items-center justify-center gap-3">
                             <label className="w-64">Maximum consecutive meeting hours:</label>
                             <input type="number" value={preferences.maxConsecutiveMeetingHours} onChange={(e) => setPreferences({ ...preferences, maxConsecutiveMeetingHours: parseInt(e.target.value) })} min="1" max="8" className="border border-gray-300 rounded p-2" />
                         </div>
-                        <div className="mb-3 flex items-center gap-3">
+                        <div className="mb-3 flex items-center justify-center gap-3">
                             <label className="w-64">Maximum meetings per day:</label>
                             <input type="number" value={preferences.maxMeetingsPerDay} onChange={(e) => setPreferences({ ...preferences, maxMeetingsPerDay: parseInt(e.target.value) })} min="1" max="15" className="border border-gray-300 rounded p-2" />
                         </div>
-                        <div className="mb-3 flex items-center gap-3">
+                        <div className="mb-3 flex items-center justify-center gap-3">
                             <label className="w-64">Minimum break duration (minutes):</label>
                             <input type="number" value={preferences.minBreakDuration} onChange={(e) => setPreferences({ ...preferences, minBreakDuration: parseInt(e.target.value) })} min="5" max="60" step="5" className="border border-gray-300 rounded p-2" />
                         </div>
@@ -600,121 +609,121 @@ const SmartBalanceScheduler: React.FC = () => {
                     )}
 
                     {showEventDetails && selectedEvent && (
-  <div className="bg-white p-4 rounded-lg shadow-md absolute z-10 w-80">
-    {!isEditingEvent ? (
-      // Display mode
-      <>
-        <h3 className="text-lg font-semibold text-purple-700 mb-3">Event Details</h3>
-        <div className="mb-3">
-          <p className="font-medium">Title:</p>
-          <p className="ml-2">{selectedEvent.title}</p>
-        </div>
-        <div className="mb-3">
-          <p className="font-medium">Type:</p>
-          <p className="ml-2 capitalize">{selectedEvent.type}</p>
-        </div>
-        <div className="mb-3">
-          <p className="font-medium">Date:</p>
-          <p className="ml-2">{moment(selectedEvent.start).format('MMMM D, YYYY')}</p>
-        </div>
-        <div className="mb-3">
-          <p className="font-medium">Time:</p>
-          <p className="ml-2">{moment(selectedEvent.start).format('h:mm A')} - {moment(selectedEvent.end).format('h:mm A')}</p>
-        </div>
-        <div className="flex gap-3">
-          <button onClick={handleEditEvent} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Edit</button>
-          <button onClick={deleteEvent} className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Delete</button>
-          <button onClick={() => setShowEventDetails(false)} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Close</button>
-        </div>
-      </>
-    ) : (
-      // Edit mode
-      <>
-        <h3 className="text-lg font-semibold text-purple-700 mb-3">Edit Event</h3>
-        <div className="mb-3">
-          <label className="block mb-1 font-medium">Title:</label>
-          <input 
-            type="text" 
-            value={editedEvent?.title || ''} 
-            onChange={(e) => setEditedEvent(prev => prev ? {...prev, title: e.target.value} : null)} 
-            className="border border-gray-300 rounded p-2 w-full" 
-          />
-        </div>
-        <div className="mb-3">
-          <label className="block mb-1 font-medium">Event Type:</label>
-          <select 
-            value={editedEvent?.type || 'work'} 
-            onChange={(e) => setEditedEvent(prev => prev ? {...prev, type: e.target.value as 'work' | 'personal' | 'no-zone'} : null)} 
-            className="border border-gray-300 rounded p-2 w-full"
-            disabled={editedEvent?.isNoZone}
-          >
-            <option value="work">Work</option>
-            <option value="personal">Personal</option>
-            {!editedEvent?.isNoZone ? null : <option value="no-zone">No-Zone</option>}
-          </select>
-        </div>
-        <div className="mb-3">
-          <label className="block mb-1 font-medium">Date:</label>
-          <input 
-            type="date" 
-            value={editedEvent ? moment(editedEvent.start).format('YYYY-MM-DD') : ''} 
-            onChange={(e) => {
-              if (editedEvent) {
-                const date = e.target.value;
-                const newStart = moment(editedEvent.start)
-                  .year(parseInt(date.substr(0, 4)))
-                  .month(parseInt(date.substr(5, 2)) - 1)
-                  .date(parseInt(date.substr(8, 2)))
-                  .toDate();
-                const newEnd = moment(editedEvent.end)
-                  .year(parseInt(date.substr(0, 4)))
-                  .month(parseInt(date.substr(5, 2)) - 1)
-                  .date(parseInt(date.substr(8, 2)))
-                  .toDate();
-                setEditedEvent({...editedEvent, start: newStart, end: newEnd});
-              }
-            }} 
-            className="border border-gray-300 rounded p-2 w-full" 
-          />
-        </div>
-        <div className="mb-3">
-          <label className="block mb-1 font-medium">Start Time:</label>
-          <input 
-            type="time" 
-            value={editedEvent ? moment(editedEvent.start).format('HH:mm') : ''} 
-            onChange={(e) => {
-              if (editedEvent) {
-                const [hours, minutes] = e.target.value.split(':').map(Number);
-                const newStart = moment(editedEvent.start).set({ hour: hours, minute: minutes }).toDate();
-                setEditedEvent({...editedEvent, start: newStart});
-              }
-            }} 
-            className="border border-gray-300 rounded p-2 w-full" 
-          />
-        </div>
-        <div className="mb-3">
-          <label className="block mb-1 font-medium">End Time:</label>
-          <input 
-            type="time" 
-            value={editedEvent ? moment(editedEvent.end).format('HH:mm') : ''} 
-            onChange={(e) => {
-              if (editedEvent) {
-                const [hours, minutes] = e.target.value.split(':').map(Number);
-                const newEnd = moment(editedEvent.end).set({ hour: hours, minute: minutes }).toDate();
-                setEditedEvent({...editedEvent, end: newEnd});
-              }
-            }} 
-            className="border border-gray-300 rounded p-2 w-full" 
-          />
-        </div>
-        <div className="flex gap-3">
-          <button onClick={saveEditedEvent} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Save</button>
-          <button onClick={cancelEditEvent} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
-        </div>
-      </>
-    )}
-  </div>
-)}
+                        <div className="bg-white p-4 rounded-lg shadow-md absolute z-10 w-80">
+                            {!isEditingEvent ? (
+                                // Display mode
+                                <>
+                                    <h3 className="text-lg font-semibold text-purple-700 mb-3">Event Details</h3>
+                                    <div className="mb-3">
+                                        <p className="font-medium">Title:</p>
+                                        <p className="ml-2">{selectedEvent.title}</p>
+                                    </div>
+                                    <div className="mb-3">
+                                        <p className="font-medium">Type:</p>
+                                        <p className="ml-2 capitalize">{selectedEvent.type}</p>
+                                    </div>
+                                    <div className="mb-3">
+                                        <p className="font-medium">Date:</p>
+                                        <p className="ml-2">{moment(selectedEvent.start).format('MMMM D, YYYY')}</p>
+                                    </div>
+                                    <div className="mb-3">
+                                        <p className="font-medium">Time:</p>
+                                        <p className="ml-2">{moment(selectedEvent.start).format('h:mm A')} - {moment(selectedEvent.end).format('h:mm A')}</p>
+                                    </div>
+                                    <div className="flex gap-3">
+                                        <button onClick={handleEditEvent} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Edit</button>
+                                        <button onClick={deleteEvent} className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Delete</button>
+                                        <button onClick={() => setShowEventDetails(false)} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Close</button>
+                                    </div>
+                                </>
+                            ) : (
+                                // Edit mode
+                                <>
+                                    <h3 className="text-lg font-semibold text-purple-700 mb-3">Edit Event</h3>
+                                    <div className="mb-3">
+                                        <label className="block mb-1 font-medium">Title:</label>
+                                        <input
+                                            type="text"
+                                            value={editedEvent?.title || ''}
+                                            onChange={(e) => setEditedEvent(prev => prev ? { ...prev, title: e.target.value } : null)}
+                                            className="border border-gray-300 rounded p-2 w-full"
+                                        />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="block mb-1 font-medium">Event Type:</label>
+                                        <select
+                                            value={editedEvent?.type || 'work'}
+                                            onChange={(e) => setEditedEvent(prev => prev ? { ...prev, type: e.target.value as 'work' | 'personal' | 'no-zone' } : null)}
+                                            className="border border-gray-300 rounded p-2 w-full"
+                                            disabled={editedEvent?.isNoZone}
+                                        >
+                                            <option value="work">Work</option>
+                                            <option value="personal">Personal</option>
+                                            {!editedEvent?.isNoZone ? null : <option value="no-zone">No-Zone</option>}
+                                        </select>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="block mb-1 font-medium">Date:</label>
+                                        <input
+                                            type="date"
+                                            value={editedEvent ? moment(editedEvent.start).format('YYYY-MM-DD') : ''}
+                                            onChange={(e) => {
+                                                if (editedEvent) {
+                                                    const date = e.target.value;
+                                                    const newStart = moment(editedEvent.start)
+                                                        .year(parseInt(date.substr(0, 4)))
+                                                        .month(parseInt(date.substr(5, 2)) - 1)
+                                                        .date(parseInt(date.substr(8, 2)))
+                                                        .toDate();
+                                                    const newEnd = moment(editedEvent.end)
+                                                        .year(parseInt(date.substr(0, 4)))
+                                                        .month(parseInt(date.substr(5, 2)) - 1)
+                                                        .date(parseInt(date.substr(8, 2)))
+                                                        .toDate();
+                                                    setEditedEvent({ ...editedEvent, start: newStart, end: newEnd });
+                                                }
+                                            }}
+                                            className="border border-gray-300 rounded p-2 w-full"
+                                        />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="block mb-1 font-medium">Start Time:</label>
+                                        <input
+                                            type="time"
+                                            value={editedEvent ? moment(editedEvent.start).format('HH:mm') : ''}
+                                            onChange={(e) => {
+                                                if (editedEvent) {
+                                                    const [hours, minutes] = e.target.value.split(':').map(Number);
+                                                    const newStart = moment(editedEvent.start).set({ hour: hours, minute: minutes }).toDate();
+                                                    setEditedEvent({ ...editedEvent, start: newStart });
+                                                }
+                                            }}
+                                            className="border border-gray-300 rounded p-2 w-full"
+                                        />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="block mb-1 font-medium">End Time:</label>
+                                        <input
+                                            type="time"
+                                            value={editedEvent ? moment(editedEvent.end).format('HH:mm') : ''}
+                                            onChange={(e) => {
+                                                if (editedEvent) {
+                                                    const [hours, minutes] = e.target.value.split(':').map(Number);
+                                                    const newEnd = moment(editedEvent.end).set({ hour: hours, minute: minutes }).toDate();
+                                                    setEditedEvent({ ...editedEvent, end: newEnd });
+                                                }
+                                            }}
+                                            className="border border-gray-300 rounded p-2 w-full"
+                                        />
+                                    </div>
+                                    <div className="flex gap-3">
+                                        <button onClick={saveEditedEvent} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Save</button>
+                                        <button onClick={cancelEditEvent} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                    )}
 
                     <Calendar
                         localizer={localizer}
