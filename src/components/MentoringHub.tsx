@@ -1,5 +1,6 @@
+import { ArrowLeftIcon, HeartPulseIcon } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface UserProfile {
   id: string;
@@ -101,6 +102,7 @@ const MentoringHub: React.FC = () => {
   // State for the connect confirmation modal
   const [showConnectModal, setShowConnectModal] = useState(false);
   const [selectedMentorName, setSelectedMentorName] = useState('');
+  const navigate = useNavigate();
 
   // AI-driven matching algorithm (simplified for the hackathon)
   const calculateCompatibility = (mentee: UserProfile, mentor: UserProfile): number => {
@@ -214,28 +216,20 @@ const MentoringHub: React.FC = () => {
 
   return (
     <div className="py-16 bg-gradient-to-b from-purple-50 to-white min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back to Home Link */}
-        <div className="mb-8">
-          <Link
-            to="/"
-            className="text-purple-600 playfair-display-custom font-medium hover:text-purple-800 transition-colors flex items-center"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-1"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-            Back to Home
-          </Link>
+      <header className="bg-purple-100 shadow-sm py-4 px-6">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <button onClick={() => navigate('/')} className="flex items-center playfair-display-custom text-purple-700 hover:text-purple-900">
+            <ArrowLeftIcon className="h-5 w-5 mr-2" />
+            <span>Back to Home</span>
+          </button>
+          <div className="flex items-center">
+            <HeartPulseIcon className="h-6 w-6 text-rose-600 mr-2" />
+            <h1 className="text-xl font-bold text-purple-800 playfair-display-custom">Mentoring Hub</h1>
+          </div>
+          <div className="w-24"></div>
         </div>
+      </header>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Page Header */}
         <h2 className="text-4xl font-bold text-gray-900 text-center playfair-display-custom">
