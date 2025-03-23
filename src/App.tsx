@@ -39,6 +39,7 @@ import SmartBalanceScheduler from './components/SmartBalanceScheduler';
 import { NetworkingRoadmap } from './components/NetworkingRoadmap';
 import CareerGrowthDashboard from './components/CareerGrowthDashboard';
 import ScheduleAnalytics from './components/ScheduleStats';
+import MentoringHub from './components/MentoringHub';
 
 // Create a Home component that contains your existing layout
 const Home = () => {
@@ -66,6 +67,7 @@ const App: React.FC = () => {
         <Route path="/networking" element={<NetworkingRoadmap />} />
         <Route path="/career" element={<CareerGrowthDashboard />} />
         <Route path="/analytics" element={<ScheduleAnalytics />} />
+        <Route path="/mentoring" element={<MentoringHub />} />
       </Routes>
     </Router>
   );
