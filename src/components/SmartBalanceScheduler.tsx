@@ -77,7 +77,7 @@ const SmartBalanceScheduler: React.FC = () => {
         const options: ToastOptions = {
             style: { background: '#f9f5ff', color: '#5e35b1', borderLeft: '4px solid #7e57c2' },
             icon: () => (
-                <span className={type === 'success' ? 'text-green-500' : type === 'error' ? 'text-red-500' : type === 'warning' ? 'text-yellow-500' : 'text-blue-500'}>
+                <span className={type === 'success' ? 'text-green-500 playfair-display-custom' : type === 'error' ? 'text-red-500 playfair-display-custom' : type === 'warning' ? 'text-yellow-500 playfair-display-custom' : 'text-blue-500 playfair-display-custom'}>
                     {type === 'success' ? '✓' : type === 'error' ? '✗' : type === 'warning' ? '⚠' : 'ℹ'}
                 </span>
             ),
@@ -381,7 +381,7 @@ const SmartBalanceScheduler: React.FC = () => {
                         <div className="mb-8">
                             <Link
                                 to="/"
-                                className="text-purple-600 font-medium hover:text-purple-800 transition-colors flex items-center"
+                                className="playfair-display-custom text-purple-600 font-medium hover:text-purple-800 transition-colors flex items-center"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                                     <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
@@ -391,34 +391,34 @@ const SmartBalanceScheduler: React.FC = () => {
                         </div>
                     </div>
 
-                    <h2 className="text-2xl font-bold text-purple-600 mb-5">Welcome to Smart Balance Scheduler</h2>
+                    <h2 className="text-2xl font-bold text-purple-600 mb-5 playfair-display-custom">Welcome to Smart Balance Scheduler</h2>
                     <p className="text-gray-600 mb-5">Let's set up your schedule preferences to help you maintain a healthy work-life balance.</p>
 
                     <div className="mb-8 pb-5 border-b border-gray-200">
-                        <h3 className="text-xl font-semibold text-purple-700 mb-3">Step 1: Connect Your Calendar</h3>
-                        <button onClick={connectCalendar} className={`px-4 py-2 rounded ${isCalendarConnected ? 'bg-gray-400 cursor-not-allowed' : 'bg-purple-600 hover:bg-purple-700 text-white'}`} disabled={isCalendarConnected}>
+                        <h3 className="text-xl font-semibold text-purple-700 mb-3 playfair-display-custom">Step 1: Connect Your Calendar</h3>
+                        <button onClick={connectCalendar} className={`px-4 py-2 playfair-display-custom rounded ${isCalendarConnected ? 'bg-gray-400 cursor-not-allowed' : 'bg-purple-600 hover:bg-purple-700 text-white'}`} disabled={isCalendarConnected}>
                             {isCalendarConnected ? 'Calendar Connected ✓' : 'Connect Google Calendar'}
                         </button>
                     </div>
 
                     <div className="mb-8 pb-5 border-b border-gray-200">
-                        <h3 className="text-xl font-semibold text-purple-700 mb-3">Step 2: Set Your Work Hours</h3>
+                        <h3 className="text-xl font-semibold text-purple-700 mb-3 playfair-display-custom">Step 2: Set Your Work Hours</h3>
                         <div className="flex gap-5">
                             <div>
-                                <label className="block mb-1">Start Time:</label>
+                                <label className="block mb-1 playfair-display-custom">Start Time:</label>
                                 <input type="time" value={preferences.workHours.start} onChange={(e) => setPreferences({ ...preferences, workHours: { ...preferences.workHours, start: e.target.value } })} className="border border-gray-300 rounded p-2" />
                             </div>
                             <div>
-                                <label className="block mb-1">End Time:</label>
+                                <label className="block mb-1 playfair-display-custom">End Time:</label>
                                 <input type="time" value={preferences.workHours.end} onChange={(e) => setPreferences({ ...preferences, workHours: { ...preferences.workHours, end: e.target.value } })} className="border border-gray-300 rounded p-2" />
                             </div>
                         </div>
                     </div>
 
                     <div className="mb-8 pb-5 border-b border-gray-200">
-                        <h3 className="text-xl font-semibold text-purple-700 mb-3">Step 3: Add No-Zone Times</h3>
-                        <p className="text-gray-600 mb-3">These are times when you don't want to be disturbed by work.</p>
-                        <button onClick={handleAddNoZoneTime} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Add No-Zone Time</button>
+                        <h3 className="text-xl font-semibold text-purple-700 mb-3 playfair-display-custom">Step 3: Add No-Zone Times</h3>
+                        <p className="text-gray-600 mb-3 playfair-display-custom">These are times when you don't want to be disturbed by work.</p>
+                        <button onClick={handleAddNoZoneTime} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 playfair-display-custom">Add No-Zone Time</button>
 
                         {showNoZoneForm && (
                             <div className="mt-4 bg-white p-4 rounded-lg shadow-md">
@@ -443,8 +443,8 @@ const SmartBalanceScheduler: React.FC = () => {
                                     </label>
                                 </div>
                                 <div className="flex gap-3">
-                                    <button onClick={saveNoZoneTime} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Save</button>
-                                    <button onClick={cancelNoZoneTime} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
+                                    <button onClick={saveNoZoneTime} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 playfair-display-custom">Save</button>
+                                    <button onClick={cancelNoZoneTime} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 playfair-display-custom">Cancel</button>
                                 </div>
                             </div>
                         )}
@@ -453,29 +453,29 @@ const SmartBalanceScheduler: React.FC = () => {
                             {preferences.noZoneTimes.map(zone => (
                                 <div key={zone.id} className="flex justify-between items-center p-2 bg-purple-50 rounded mb-2">
                                     <span>{['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][zone.dayOfWeek]}: {zone.start} - {zone.end} {zone.recurring ? '(recurring)' : ''}</span>
-                                    <button onClick={() => setPreferences({ ...preferences, noZoneTimes: preferences.noZoneTimes.filter(z => z.id !== zone.id) })} className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Remove</button>
+                                    <button onClick={() => setPreferences({ ...preferences, noZoneTimes: preferences.noZoneTimes.filter(z => z.id !== zone.id) })} className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 playfair-display-custom">Remove</button>
                                 </div>
                             ))}
                         </div>
                     </div>
 
                     <div className="mb-8 pb-5 border-b border-gray-200">
-                        <h3 className="text-xl font-semibold text-purple-700 mb-3">Step 4: Set Balance Preferences</h3>
+                        <h3 className="text-xl font-semibold text-purple-700 mb-3 playfair-display-custom">Step 4: Set Balance Preferences</h3>
                         <div className="mb-3 flex items-center gap-3">
-                            <label className="w-64">Maximum consecutive meeting hours:</label>
+                            <label className="w-64 playfair-display-custom">Maximum consecutive meeting hours:</label>
                             <input type="number" value={preferences.maxConsecutiveMeetingHours} onChange={(e) => setPreferences({ ...preferences, maxConsecutiveMeetingHours: parseInt(e.target.value) })} min="1" max="8" className="border border-gray-300 rounded p-2" />
                         </div>
                         <div className="mb-3 flex items-center gap-3">
-                            <label className="w-64">Maximum meetings per day:</label>
+                            <label className="w-64 playfair-display-custom">Maximum meetings per day:</label>
                             <input type="number" value={preferences.maxMeetingsPerDay} onChange={(e) => setPreferences({ ...preferences, maxMeetingsPerDay: parseInt(e.target.value) })} min="1" max="15" className="border border-gray-300 rounded p-2" />
                         </div>
                         <div className="mb-3 flex items-center gap-3">
-                            <label className="w-64">Minimum break duration (minutes):</label>
+                            <label className="w-64 playfair-display-custom">Minimum break duration (minutes):</label>
                             <input type="number" value={preferences.minBreakDuration} onChange={(e) => setPreferences({ ...preferences, minBreakDuration: parseInt(e.target.value) })} min="5" max="60" step="5" className="border border-gray-300 rounded p-2" />
                         </div>
                     </div>
 
-                    <button onClick={completeSetup} className="bg-purple-600 text-white px-6 py-3 rounded hover:bg-purple-700">Complete Setup</button>
+                    <button onClick={completeSetup} className="bg-purple-600 playfair-display-custom text-white px-6 py-3 rounded hover:bg-purple-700">Complete Setup</button>
                 </div>
             ) : (
                 <div>
@@ -486,7 +486,7 @@ const SmartBalanceScheduler: React.FC = () => {
                             <div className="mb-8">
                                 <Link
                                     to="/"
-                                    className="text-purple-600 font-medium hover:text-purple-800 transition-colors flex items-center"
+                                    className="text-purple-600 font-medium hover:text-purple-800 transition-colors flex items-center playfair-display-custom"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                                         <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
@@ -498,30 +498,30 @@ const SmartBalanceScheduler: React.FC = () => {
                     </div>
 
                     <div className="bg-white rounded-lg p-5 shadow-md mb-5">
-                        <h3 className="text-xl font-semibold text-purple-700 mb-3">Today's Schedule</h3>
+                        <h3 className="text-xl font-semibold text-purple-700 mb-3 playfair-display-custom">Today's Schedule</h3>
                         <div className="flex justify-between">
                             <div className="text-center flex-1">
-                                <span className="block text-2xl font-bold text-purple-600">{summary.workHours}h</span>
-                                <span className="text-gray-600">Work Time</span>
+                                <span className="block text-2xl font-bold text-purple-600 playfair-display-custom">{summary.workHours}h</span>
+                                <span className="text-gray-600 playfair-display-custom">Work Time</span>
                             </div>
                             <div className="text-center flex-1">
-                                <span className="block text-2xl font-bold text-purple-600">{summary.personalHours}h</span>
-                                <span className="text-gray-600">Personal Time</span>
+                                <span className="block text-2xl font-bold text-purple-600 playfair-display-custom">{summary.personalHours}h</span>
+                                <span className="text-gray-600 playfair-display-custom">Personal Time</span>
                             </div>
                             <div className="text-center flex-1">
-                                <span className="block text-2xl font-bold text-purple-600">{summary.meetingCount}</span>
-                                <span className="text-gray-600">Meetings</span>
+                                <span className="block text-2xl font-bold text-purple-600 playfair-display-custom">{summary.meetingCount}</span>
+                                <span className="text-gray-600 playfair-display-custom">Meetings</span>
                             </div>
                             <div className="text-center flex-1">
-                                <span className="block text-2xl font-bold text-purple-600">{summary.workLifeRatio}</span>
-                                <span className="text-gray-600">Work/Life Ratio</span>
+                                <span className="block text-2xl font-bold text-purple-600 playfair-display-custom">{summary.workLifeRatio}</span>
+                                <span className="text-gray-600 playfair-display-custom">Work/Life Ratio</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="flex gap-3 mb-5">
-                        <button onClick={handleAddNoZoneTime} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Add No-Zone Time</button>
-                        <button onClick={handleAddEvent} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Add Calendar Event</button>
+                        <button onClick={handleAddNoZoneTime} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 playfair-display-custom">Add No-Zone Time</button>
+                        <button onClick={handleAddEvent} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 playfair-display-custom">Add Calendar Event</button>
                     </div>
 
                     {showNoZoneForm && (
@@ -547,15 +547,15 @@ const SmartBalanceScheduler: React.FC = () => {
                                 </label>
                             </div>
                             <div className="flex gap-3">
-                                <button onClick={saveNoZoneTime} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Save</button>
-                                <button onClick={cancelNoZoneTime} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
+                                <button onClick={saveNoZoneTime} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 playfair-display-custom">Save</button>
+                                <button onClick={cancelNoZoneTime} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 playfair-display-custom">Cancel</button>
                             </div>
                         </div>
                     )}
 
                     {showEventForm && (
                         <div className="bg-white p-4 rounded-lg shadow-md absolute z-10 w-80">
-                            <h3 className="text-lg font-semibold text-purple-700 mb-3">Add New Event</h3>
+                            <h3 className="text-lg font-semibold text-purple-700 mb-3 playfair-display-custom">Add New Event</h3>
                             <div className="mb-3">
                                 <label className="block mb-1 font-medium">Title:</label>
                                 <input type="text" value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} placeholder="Meeting title" className="border border-gray-300 rounded p-2 w-full" />
@@ -593,8 +593,8 @@ const SmartBalanceScheduler: React.FC = () => {
                                 }} className="border border-gray-300 rounded p-2 w-full" />
                             </div>
                             <div className="flex gap-3">
-                                <button onClick={saveNewEvent} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Add Event</button>
-                                <button onClick={cancelNewEvent} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
+                                <button onClick={saveNewEvent} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 playfair-display-custom">Add Event</button>
+                                <button onClick={cancelNewEvent} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 playfair-display-custom">Cancel</button>
                             </div>
                         </div>
                     )}
@@ -604,7 +604,7 @@ const SmartBalanceScheduler: React.FC = () => {
     {!isEditingEvent ? (
       // Display mode
       <>
-        <h3 className="text-lg font-semibold text-purple-700 mb-3">Event Details</h3>
+        <h3 className="text-lg font-semibold text-purple-700 mb-3 playfair-display-custom">Event Details</h3>
         <div className="mb-3">
           <p className="font-medium">Title:</p>
           <p className="ml-2">{selectedEvent.title}</p>
@@ -622,15 +622,15 @@ const SmartBalanceScheduler: React.FC = () => {
           <p className="ml-2">{moment(selectedEvent.start).format('h:mm A')} - {moment(selectedEvent.end).format('h:mm A')}</p>
         </div>
         <div className="flex gap-3">
-          <button onClick={handleEditEvent} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Edit</button>
-          <button onClick={deleteEvent} className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Delete</button>
-          <button onClick={() => setShowEventDetails(false)} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Close</button>
+          <button onClick={handleEditEvent} className="bg-blue-600 playfair-display-custom text-white px-4 py-2 rounded hover:bg-blue-700">Edit</button>
+          <button onClick={deleteEvent} className="bg-red-600 playfair-display-custom text-white px-4 py-2 rounded hover:bg-red-700">Delete</button>
+          <button onClick={() => setShowEventDetails(false)} className="bg-gray-500 playfair-display-custom text-white px-4 py-2 rounded hover:bg-gray-600">Close</button>
         </div>
       </>
     ) : (
       // Edit mode
       <>
-        <h3 className="text-lg font-semibold text-purple-700 mb-3">Edit Event</h3>
+        <h3 className="text-lg font-semibold text-purple-700 mb-3 playfair-display-custom">Edit Event</h3>
         <div className="mb-3">
           <label className="block mb-1 font-medium">Title:</label>
           <input 
@@ -708,8 +708,8 @@ const SmartBalanceScheduler: React.FC = () => {
           />
         </div>
         <div className="flex gap-3">
-          <button onClick={saveEditedEvent} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Save</button>
-          <button onClick={cancelEditEvent} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
+          <button onClick={saveEditedEvent} className="bg-purple-600 playfair-display-custom text-white px-4 py-2 rounded hover:bg-purple-700">Save</button>
+          <button onClick={cancelEditEvent} className="bg-gray-500 playfair-display-custom text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
         </div>
       </>
     )}

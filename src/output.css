@@ -114,6 +114,24 @@ strong {
 2. Correct the odd 'em' font sizing in all browsers.
 */
 
+.clip-path-wave {
+  clip-path: polygon(
+    0 100%,
+    0 50%,
+    10% 70%,
+    20% 40%,
+    30% 60%,
+    40% 30%,
+    50% 50%,
+    60% 20%,
+    70% 60%,
+    80% 30%,
+    90% 70%,
+    100% 40%,
+    100% 100%
+  );
+}
+
 code,
 kbd,
 samp,

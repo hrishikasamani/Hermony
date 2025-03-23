@@ -7,18 +7,18 @@ const CTASection: React.FC = () => {
       <div className="max-w-5xl mx-auto bg-gradient-to-r from-purple-600 to-teal-500 rounded-3xl overflow-hidden shadow-xl">
         <div className="p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+            <h2 className="text-3xl md:text-4xl playfair-display-custom font-bold text-white leading-tight">
               Ready to Find Your Perfect Balance?
             </h2>
-            <p className="mt-4 text-purple-100 text-lg">
+            <p className="mt-4 playfair-display-custom text-purple-100 text-lg">
               Join Hermony today and connect with a community of women who are
               harmonizing ambition with well-being.
             </p>
             <div className="mt-8 space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row">
-              <button className="bg-white text-purple-600 hover:bg-purple-50 px-8 py-3 rounded-full font-medium transition-colors">
+              <button className="bg-white playfair-display-custom text-purple-600 hover:bg-purple-50 px-8 py-3 rounded-full font-medium transition-colors">
                 Get Started Free
               </button>
-              <button className="border border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-medium transition-colors">
+              <button className="border border-white playfair-display-custom text-white hover:bg-white/10 px-8 py-3 rounded-full font-medium transition-colors">
                 Schedule a Demo
               </button>
             </div>

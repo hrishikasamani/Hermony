@@ -219,7 +219,7 @@ const MentoringHub: React.FC = () => {
         <div className="mb-8">
           <Link
             to="/"
-            className="text-purple-600 font-medium hover:text-purple-800 transition-colors flex items-center"
+            className="text-purple-600 playfair-display-custom font-medium hover:text-purple-800 transition-colors flex items-center"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -238,22 +238,22 @@ const MentoringHub: React.FC = () => {
         </div>
 
         {/* Page Header */}
-        <h2 className="text-4xl font-bold text-gray-900 text-center">
+        <h2 className="text-4xl font-bold text-gray-900 text-center playfair-display-custom">
           Peer-to-Peer Mentoring Hub
         </h2>
-        <p className="mt-4 text-lg text-gray-600 text-center max-w-2xl mx-auto">
+        <p className="mt-4 text-lg text-gray-600 text-center max-w-2xl mx-auto playfair-display-custom">
           Connect with mentors or mentees for quick 15-minute virtual chats, matched by skills, goals, and life stage.
         </p>
 
         {/* Profile Setup Section */}
         {!currentUser ? (
           <div className="mt-12 bg-white p-6 rounded-xl shadow-md border border-gray-100">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4 playfair-display-custom">
               Set Up Your Mentoring Profile
             </h3>
             <button
               onClick={() => setShowProfileForm(true)}
-              className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors"
+              className="px-4 py-2 bg-purple-600 playfair-display-custom text-white rounded-md hover:bg-purple-700 transition-colors"
             >
               Create Profile
             </button>
@@ -263,19 +263,19 @@ const MentoringHub: React.FC = () => {
             {/* Matched! Message - Only shown if there are matches */}
             {showMatchedMessage && matches.length > 0 && (
               <div className="text-center mb-6 animate-bounce">
-                <h3 className="text-3xl font-bold text-purple-600">Matched!</h3>
-                <p className="text-gray-600">Here are your mentor suggestions.</p>
+                <h3 className="text-3xl font-bold text-purple-600 playfair-display-custom">Matched!</h3>
+                <p className="text-gray-600 playfair-display-custom">Here are your mentor suggestions.</p>
               </div>
             )}
 
             {/* Mentor Suggestion Cards */}
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">Suggested Mentors</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4 playfair-display-custom">Suggested Mentors</h3>
             {matches.length === 0 ? (
               <div className="text-center">
-                <p className="text-gray-600 mb-4">No matches found. Try updating your profile!</p>
+                <p className="text-gray-600 mb-4 playfair-display-custom">No matches found. Try updating your profile!</p>
                 <button
                   onClick={() => setShowProfileForm(true)}
-                  className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors"
+                  className="px-4 py-2 bg-purple-600 playfair-display-custom text-white rounded-md hover:bg-purple-700 transition-colors"
                 >
                   Update Profile
                 </button>
@@ -294,16 +294,16 @@ const MentoringHub: React.FC = () => {
                         className="w-12 h-12 rounded-full mr-4"
                       />
                       <div>
-                        <h4 className="text-lg font-semibold text-gray-800">
+                        <h4 className="text-lg font-semibold text-gray-800 playfair-display-custom">
                           {match.mentor.name}
                         </h4>
-                        <p className="text-sm text-gray-500">{match.mentor.lifeStage}</p>
+                        <p className="text-sm text-gray-500 playfair-display-custom">{match.mentor.lifeStage}</p>
                       </div>
                     </div>
                     <div className="mb-4">
-                      <p className="text-gray-600 mb-2">
+                      <p className="text-gray-600 mb-2 playfair-display-custom">
                         <span className="font-medium">Compatibility:</span>{' '}
-                        <span className="text-purple-600">{match.compatibilityScore}%</span>
+                        <span className="text-purple-600 playfair-display-custom">{match.compatibilityScore}%</span>
                       </p>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
                         <div
@@ -311,16 +311,16 @@ const MentoringHub: React.FC = () => {
                           style={{ width: `${match.compatibilityScore}%` }}
                         ></div>
                       </div>
-                      <p className="text-gray-600 mt-2">
+                      <p className="text-gray-600 mt-2 playfair-display-custom">
                         <span className="font-medium">Skills:</span> {match.mentor.skills.join(', ')}
                       </p>
-                      <p className="text-gray-600">
+                      <p className="text-gray-600 playfair-display-custom">
                         <span className="font-medium">Goals:</span> {match.mentor.goals.join(', ')}
                       </p>
                     </div>
                     <button
                       onClick={() => handleConnect(match.mentor)}
-                      className="w-full px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors flex items-center justify-center"
+                      className="w-full px-4 py-2 bg-purple-600 playfair-display-custom text-white rounded-md hover:bg-purple-700 transition-colors flex items-center justify-center"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -350,10 +350,10 @@ const MentoringHub: React.FC = () => {
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg p-6 max-w-sm w-full mx-4 animate-fade-in">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-2xl font-bold text-gray-900">Create Your Profile</h3>
+                <h3 className="text-2xl font-bold text-gray-900 playfair-display-custom">Create Your Profile</h3>
                 <button
                   onClick={() => setShowProfileForm(false)}
-                  className="text-gray-600 hover:text-gray-800"
+                  className="text-gray-600 hover:text-gray-800 playfair-display-custom"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -373,48 +373,48 @@ const MentoringHub: React.FC = () => {
               </div>
               <form onSubmit={handleProfileSubmit}>
                 <div className="mb-4">
-                  <label className="block text-gray-600 mb-2">Role</label>
+                  <label className="block text-gray-600 mb-2 playfair-display-custom">Role</label>
                   <select
                     value={roleInput}
                     onChange={(e) => setRoleInput(e.target.value as 'mentor' | 'mentee')}
-                    className="w-full p-2 border rounded-md text-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                    className="w-full p-2 border rounded-md playfair-display-custom text-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600"
                   >
                     <option value="mentee">Mentee</option>
                     <option value="mentor">Mentor</option>
                   </select>
                 </div>
                 <div className="mb-4">
-                  <label className="block text-gray-600 mb-2">Skills (comma-separated)</label>
+                  <label className="block text-gray-600 mb-2 playfair-display-custom">Skills (comma-separated)</label>
                   <input
                     type="text"
                     value={skillsInput}
                     onChange={(e) => setSkillsInput(e.target.value)}
                     placeholder="e.g., Python, JavaScript"
-                    className="w-full p-2 border rounded-md text-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                    className="w-full p-2 border rounded-md playfair-display-custom text-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600"
                   />
                 </div>
                 <div className="mb-4">
-                  <label className="block text-gray-600 mb-2">Goals (comma-separated)</label>
+                  <label className="block text-gray-600 mb-2 playfair-display-custom">Goals (comma-separated)</label>
                   <input
                     type="text"
                     value={goalsInput}
                     onChange={(e) => setGoalsInput(e.target.value)}
                     placeholder="e.g., Work-life balance, Career growth"
-                    className="w-full p-2 border rounded-md text-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                    className="w-full p-2 border rounded-md playfair-display-custom text-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600"
                   />
                 </div>
                 <div className="mb-4">
-                  <label className="block text-gray-600 mb-2">Life Stage</label>
+                  <label className="block text-gray-600 mb-2 playfair-display-custom">Life Stage</label>
                   <input
                     type="text"
                     value={lifeStageInput}
                     onChange={(e) => setLifeStageInput(e.target.value)}
                     placeholder="e.g., Junior developer seeking work-life tips"
-                    className="w-full p-2 border rounded-md text-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                    className="w-full p-2 border rounded-md playfair-display-custom text-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600"
                   />
                 </div>
                 <div className="mb-4">
-                  <label className="block text-gray-600 mb-2">Availability</label>
+                  <label className="block text-gray-600 mb-2 playfair-display-custom">Availability</label>
                   {availabilityInput.map((slot, index) => (
                     <div key={index} className="flex space-x-2 mb-2">
                       <input
@@ -422,28 +422,28 @@ const MentoringHub: React.FC = () => {
                         value={slot.day}
                         onChange={(e) => updateAvailability(index, 'day', e.target.value)}
                         placeholder="Day (e.g., Monday)"
-                        className="w-1/2 p-2 border rounded-md text-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                        className="w-1/2 p-2 border rounded-md playfair-display-custom text-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600"
                       />
                       <input
                         type="text"
                         value={slot.time}
                         onChange={(e) => updateAvailability(index, 'time', e.target.value)}
                         placeholder="Time (e.g., 10:00 AM - 12:00 PM)"
-                        className="w-1/2 p-2 border rounded-md text-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                        className="w-1/2 p-2 border rounded-md playfair-display-custom text-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600"
                       />
                     </div>
                   ))}
                   <button
                     type="button"
                     onClick={addAvailability}
-                    className="text-purple-600 hover:text-purple-800"
+                    className="text-purple-600 hover:text-purple-800 playfair-display-custom"
                   >
                     + Add Availability
                   </button>
                 </div>
                 <button
                   type="submit"
-                  className="w-full px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors"
+                  className="w-full px-4 py-2 bg-purple-600 playfair-display-custom text-white rounded-md hover:bg-purple-700 transition-colors"
                 >
                   Save Profile
                 </button>
@@ -457,10 +457,10 @@ const MentoringHub: React.FC = () => {
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg p-6 max-w-sm w-full mx-4 animate-fade-in">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-2xl font-bold text-gray-900">Connection Confirmed!</h3>
+                <h3 className="text-2xl font-bold text-gray-900 playfair-display-custom">Connection Confirmed!</h3>
                 <button
                   onClick={() => setShowConnectModal(false)}
-                  className="text-gray-600 hover:text-gray-800"
+                  className="text-gray-600 hover:text-gray-800 playfair-display-custom"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -479,15 +479,15 @@ const MentoringHub: React.FC = () => {
                 </button>
               </div>
               <div className="text-center">
-                <p className="text-gray-600 mb-4">
-                  You’ve connected with <span className="font-semibold text-purple-600">{selectedMentorName}</span>!
+                <p className="text-gray-600 mb-4 playfair-display-custom">
+                  You’ve connected with <span className="font-semibold text-purple-600 playfair-display-custom">{selectedMentorName}</span>!
                 </p>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-600 mb-6 playfair-display-custom">
                   A 15-minute virtual chat has been scheduled.
                 </p>
                 <button
                   onClick={() => setShowConnectModal(false)}
-                  className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors"
+                  className="px-4 py-2 bg-purple-600 playfair-display-custom text-white rounded-md hover:bg-purple-700 transition-colors"
                 >
                   Close
                 </button>

@@ -151,13 +151,13 @@ const ScheduleAnalytics: React.FC = () => {
         {/* Header - matching WellbeingChatbot */}
         <header className="bg-purple-100 shadow-sm py-4 px-6">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
-            <button onClick={() => navigate('/')} className="flex items-center text-purple-700 hover:text-purple-900">
+            <button onClick={() => navigate('/')} className="flex items-center playfair-display-custom text-purple-700 hover:text-purple-900">
               <ArrowLeftIcon className="h-5 w-5 mr-2" />
               <span>Back to Home</span>
             </button>
             <div className="flex items-center">
-              <HeartPulseIcon className="h-6 w-6 text-rose-600 mr-2" />
-              <h1 className="text-xl font-bold text-purple-800">Schedule Analytics</h1>
+              <HeartPulseIcon className="h-6 w-6 text-rose-600 mr-2 playfair-display-custom" />
+              <h1 className="text-xl font-bold text-purple-800 playfair-display-custom">Schedule Analytics</h1>
             </div>
             <div className="w-24"></div>
           </div>
@@ -165,7 +165,7 @@ const ScheduleAnalytics: React.FC = () => {
 
         <div className="w-full flex flex-col items-center justify-center py-24">
           <div className="w-12 h-12 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
-          <p className="mt-4 text-purple-600 text-lg">Loading insights...</p>
+          <p className="mt-4 text-purple-600 text-lg playfair-display-custom">Loading insights...</p>
         </div>
       </div>
     );
@@ -209,13 +209,13 @@ const ScheduleAnalytics: React.FC = () => {
       {/* Header - matching WellbeingChatbot */}
       <header className="bg-purple-100 shadow-sm py-4 px-6">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <button onClick={() => navigate('/')} className="flex items-center text-purple-600 hover:text-purple-700">
+          <button onClick={() => navigate('/')} className="flex items-center playfair-display-custom text-purple-600 hover:text-purple-700">
             <ArrowLeftIcon className="h-5 w-5 mr-2" />
             <span>Back to Home</span>
           </button>
           <div className="flex items-center">
-            <HeartPulseIcon className="h-6 w-6 text-purple-500 mr-2" />
-            <h1 className="text-xl font-bold text-purple-700">Schedule Analytics</h1>
+            <HeartPulseIcon className="h-6 w-6 text-purple-500 mr-2 playfair-display-custom" />
+            <h1 className="text-xl font-bold text-purple-700 playfair-display-custom">Schedule Analytics</h1>
           </div>
           <div className="w-24"></div>
         </div>
@@ -229,14 +229,14 @@ const ScheduleAnalytics: React.FC = () => {
             <div className="bg-white p-6 rounded-lg shadow-md border border-purple-200">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-gray-500 text-sm">Weekly Work Time</p>
-                  <h3 className="text-3xl font-bold text-purple-500 mt-1">{stats.weeklyTotals.workHours.toFixed(2)}h</h3>
-                  <p className="text-sm text-gray-500 mt-1">
+                  <p className="text-gray-500 text-sm playfair-display-custom">Weekly Work Time</p>
+                  <h3 className="text-3xl font-bold text-purple-500 mt-1 playfair-display-custom">{stats.weeklyTotals.workHours.toFixed(2)}h</h3>
+                  <p className="text-sm text-gray-500 mt-1 playfair-display-custom">
                     vs. {stats.weeklyTotals.personalHours.toFixed(2)}h personal
                   </p>
                 </div>
                 <div className="bg-purple-100 p-2 rounded-lg">
-                  <CalendarIcon className="h-5 w-5 text-purple-500" />
+                  <CalendarIcon className="h-5 w-5 text-purple-500 playfair-display-custom" />
                 </div>
               </div>
             </div>
@@ -244,14 +244,14 @@ const ScheduleAnalytics: React.FC = () => {
             <div className="bg-white p-6 rounded-lg shadow-md border border-purple-200">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-gray-500 text-sm">Total Meetings</p>
-                  <h3 className="text-3xl font-bold text-purple-500 mt-1">{stats.weeklyTotals.meetingCount}</h3>
-                  <p className="text-sm text-gray-500 mt-1">
+                  <p className="text-gray-500 text-sm playfair-display-custom">Total Meetings</p>
+                  <h3 className="text-3xl font-bold text-purple-500 mt-1 playfair-display-custom">{stats.weeklyTotals.meetingCount}</h3>
+                  <p className="text-sm text-gray-500 mt-1 playfair-display-custom">
                     Avg. {Math.round(stats.weeklyTotals.meetingCount / 5)} per workday
                   </p>
                 </div>
                 <div className="bg-purple-100 p-2 rounded-lg">
-                  <PieChartIcon className="h-5 w-5 text-purple-500" />
+                  <PieChartIcon className="h-5 w-5 text-purple-500 playfair-display-custom" />
                 </div>
               </div>
             </div>
@@ -259,14 +259,14 @@ const ScheduleAnalytics: React.FC = () => {
             <div className="bg-white p-6 rounded-lg shadow-md border border-purple-200">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-gray-500 text-sm">Work/Life Ratio</p>
-                  <h3 className="text-3xl font-bold text-purple-500 mt-1">{stats.weeklyTotals.workLifeRatio.toFixed(2)}</h3>
-                  <p className={`text-sm mt-1 ${stats.weeklyTotals.workLifeRatio > 2 ? 'text-rose-500' : 'text-emerald-500'}`}>
+                  <p className="text-gray-500 text-sm playfair-display-custom">Work/Life Ratio</p>
+                  <h3 className="text-3xl font-bold text-purple-500 mt-1 playfair-display-custom">{stats.weeklyTotals.workLifeRatio.toFixed(2)}</h3>
+                  <p className={`text-sm mt-1 playfair-display-custom ${stats.weeklyTotals.workLifeRatio > 2 ? 'text-rose-500' : 'text-emerald-500'}`}>
                     {stats.weeklyTotals.workLifeRatio > 2 ? 'Above target (2.0)' : 'Within target'}
                   </p>
                 </div>
                 <div className="bg-purple-100 p-2 rounded-lg">
-                  <BarChart3Icon className="h-5 w-5 text-purple-500" />
+                  <BarChart3Icon className="h-5 w-5 text-purple-500 playfair-display-custom" />
                 </div>
               </div>
             </div>
@@ -274,14 +274,14 @@ const ScheduleAnalytics: React.FC = () => {
             <div className="bg-white p-6 rounded-lg shadow-md border border-purple-200">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-gray-500 text-sm">Boundary Alerts</p>
-                  <h3 className="text-3xl font-bold text-rose-600 mt-1">{stats.weeklyTotals.notificationsSent}</h3>
-                  <p className="text-sm text-gray-500 mt-1">
+                  <p className="text-gray-500 text-sm playfair-display-custom">Boundary Alerts</p>
+                  <h3 className="text-3xl font-bold text-rose-600 mt-1 playfair-display-custom">{stats.weeklyTotals.notificationsSent}</h3>
+                  <p className="text-sm text-gray-500 mt-1 playfair-display-custom">
                     {stats.weeklyTotals.noZoneConflicts} No-Zone conflicts
                   </p>
                 </div>
                 <div className="bg-rose-100 p-2 rounded-lg">
-                  <BellIcon className="h-5 w-5 text-rose-600" />
+                  <BellIcon className="h-5 w-5 text-rose-600 playfair-display-custom" />
                 </div>
               </div>
             </div>
@@ -290,10 +290,10 @@ const ScheduleAnalytics: React.FC = () => {
           {/* Time Distribution Chart */}
           <div className="bg-white p-6 rounded-lg shadow-md border border-purple-200 mb-8">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
-                              <h2 className="text-xl font-bold text-purple-700">Time Distribution</h2>
+                              <h2 className="text-xl font-bold playfair-display-custom text-purple-700">Time Distribution</h2>
               <div className="mt-4 sm:mt-0 bg-purple-50 inline-flex rounded-full p-1">
                 <button 
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 rounded-full playfair-display-custom text-sm font-medium transition-colors ${
                     timeframe === 'week' ? 'bg-purple-500 text-white' : 'text-gray-600'
                   }`} 
                   onClick={() => setTimeframe('week')}
@@ -301,7 +301,7 @@ const ScheduleAnalytics: React.FC = () => {
                   This Week
                 </button>
                 <button 
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 rounded-full playfair-display-custom text-sm font-medium transition-colors ${
                     timeframe === 'month' ? 'bg-purple-500 text-white' : 'text-gray-600'
                   }`} 
                   onClick={() => setTimeframe('month')}
@@ -335,7 +335,7 @@ const ScheduleAnalytics: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {/* Work/Life Balance Pie Chart */}
             <div className="bg-white p-6 rounded-lg shadow-md border border-purple-200">
-              <h2 className="text-xl font-bold text-purple-700 mb-4 text-center">Weekly Balance</h2>
+              <h2 className="text-xl font-bold text-purple-700 mb-4 text-center playfair-display-custom">Weekly Balance</h2>
               <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
@@ -361,15 +361,15 @@ const ScheduleAnalytics: React.FC = () => {
                   </PieChart>
                 </ResponsiveContainer>
               </div>
-              <p className="text-center text-gray-600 mt-4">
-                Ratio: <span className="font-bold text-purple-500">{stats.weeklyTotals.workLifeRatio.toFixed(2)}</span>
+              <p className="text-center text-gray-600 mt-4 playfair-display-custom">
+                Ratio: <span className="font-bold text-purple-500 playfair-display-custom">{stats.weeklyTotals.workLifeRatio.toFixed(2)}</span>
               </p>
             </div>
             
             {/* Focus Time Stats */}
             {showFocusTime && (
               <div className="bg-white p-6 rounded-lg shadow-md border border-purple-200">
-                <h2 className="text-xl font-bold text-purple-700 mb-4 text-center">Focus Time</h2>
+                <h2 className="text-xl font-bold text-purple-700 mb-4 text-center playfair-display-custom">Focus Time</h2>
                 <div className="h-64">
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
@@ -395,8 +395,8 @@ const ScheduleAnalytics: React.FC = () => {
                     </PieChart>
                   </ResponsiveContainer>
                 </div>
-                <p className="text-center text-gray-600 mt-4">
-                  <span className="font-bold text-green-600">{stats.focusTimeStats.achieved.toFixed(2)}</span> of {stats.focusTimeStats.planned.toFixed(2)} planned hours achieved
+                <p className="text-center text-gray-600 mt-4 playfair-display-custom">
+                  <span className="font-bold text-green-600 playfair-display-custom">{stats.focusTimeStats.achieved.toFixed(2)}</span> of {stats.focusTimeStats.planned.toFixed(2)} planned hours achieved
                 </p>
               </div>
             )}
@@ -404,7 +404,7 @@ const ScheduleAnalytics: React.FC = () => {
             {/* Notification Reasons */}
             {showNotifications && (
               <div className="bg-white p-6 rounded-lg shadow-md border border-purple-200">
-                <h2 className="text-xl font-bold text-purple-700 mb-4">Top Alert Reasons</h2>
+                <h2 className="text-xl font-bold text-purple-700 mb-4 playfair-display-custom">Top Alert Reasons</h2>
                 <div className="h-64">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart
@@ -429,9 +429,9 @@ const ScheduleAnalytics: React.FC = () => {
           {/* Monthly Trends */}
           <div className="bg-white p-6 rounded-lg shadow-md border border-purple-200 mb-8">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-bold text-purple-700">Monthly Trends</h2>
+              <h2 className="text-xl font-bold text-purple-700 playfair-display-custom">Monthly Trends</h2>
               <div className="bg-purple-100 p-2 rounded-lg">
-                <TrendingUpIcon className="h-5 w-5 text-purple-500" />
+                <TrendingUpIcon className="h-5 w-5 text-purple-500 playfair-display-custom" />
               </div>
             </div>
             <div className="h-64 md:h-80">
@@ -487,15 +487,15 @@ const ScheduleAnalytics: React.FC = () => {
           {/* Action Buttons */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
             <div className="bg-white p-6 rounded-lg shadow-md border border-purple-200">
-              <h2 className="text-xl font-bold text-purple-700 mb-4">Actions</h2>
+              <h2 className="text-xl font-bold text-purple-700 mb-4 playfair-display-custom">Actions</h2>
               <div className="flex flex-wrap gap-4 items-center justify-center">
-                <button className="flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-full text-sm font-medium transition-colors">
+                <button className="flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-full playfair-display-custom text-sm font-medium transition-colors">
                   <span>Export Report</span>
                   <ArrowRightIcon size={16} />
                 </button>
                 <button 
                   onClick={() => navigate('/scheduler')}
-                  className="flex items-center gap-2 border border-purple-400 text-purple-500 px-6 py-3 rounded-full text-sm font-medium hover:bg-purple-50 transition-colors"
+                  className="flex items-center gap-2 border border-purple-400 text-purple-500 px-6 py-3 rounded-full text-sm font-medium hover:bg-purple-50 playfair-display-custom transition-colors"
                 >
                   <span>Adjust Preferences</span>
                 </button>
@@ -503,15 +503,15 @@ const ScheduleAnalytics: React.FC = () => {
             </div>
             
             <div className="bg-white p-6 rounded-lg shadow-md border border-purple-200">
-              <h2 className="text-xl font-bold text-purple-700 mb-4">Wellbeing Tips</h2>
-              <p className="text-gray-700 mb-4">
+              <h2 className="text-xl font-bold text-purple-700 mb-4 playfair-display-custom">Wellbeing Tips</h2>
+              <p className="text-gray-700 mb-4 playfair-display-custom">
                 Based on your work patterns, consider taking more breaks during your workday. 
                 Regular short breaks can improve focus and reduce stress.
               </p>
               <div className="flex justify-center">
                 <button 
                   onClick={() => navigate('/wellbeing')}
-                  className="flex items-center gap-2 bg-purple-100 text-purple-500 px-6 py-3 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors"
+                  className="flex items-center gap-2 playfair-display-custom bg-purple-100 text-purple-500 px-6 py-3 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors"
                 >
                   <span>Chat with Balance Buddy AI</span>
                 </button>
