@@ -1,5 +1,6 @@
+import { ArrowLeftIcon, HeartPulseIcon } from 'lucide-react';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface Opportunity {
   id: number;
@@ -57,6 +58,7 @@ export const NetworkingRoadmap: React.FC = () => {
   ]);
   const [appliedOpportunities, setAppliedOpportunities] = useState<number[]>([]);
   const [selectedOpportunity, setSelectedOpportunity] = useState<Opportunity | null>(null);
+  const navigate = useNavigate();
 
   // State for Coffee Chats
   const [chats] = useState<Chat[]>([
@@ -160,9 +162,9 @@ export const NetworkingRoadmap: React.FC = () => {
     const updatedPosts = posts.map((post) =>
       post.id === postId
         ? {
-            ...post,
-            replies: [...post.replies, { id: post.replies.length + 1, author: 'You', authorImage: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80', text: replyText, likes: 0 }],
-          }
+          ...post,
+          replies: [...post.replies, { id: post.replies.length + 1, author: 'You', authorImage: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80', text: replyText, likes: 0 }],
+        }
         : post
     );
     setPosts(updatedPosts);
@@ -181,11 +183,11 @@ export const NetworkingRoadmap: React.FC = () => {
     const updatedPosts = posts.map((post) =>
       post.id === postId
         ? {
-            ...post,
-            replies: post.replies.map((reply) =>
-              reply.id === replyId ? { ...reply, likes: reply.likes + 1 } : reply
-            ),
-          }
+          ...post,
+          replies: post.replies.map((reply) =>
+            reply.id === replyId ? { ...reply, likes: reply.likes + 1 } : reply
+          ),
+        }
         : post
     );
     setPosts(updatedPosts);
@@ -203,19 +205,21 @@ export const NetworkingRoadmap: React.FC = () => {
 
   return (
     <div className="py-12 bg-gray-100 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back to Home Link */}
-        <div className="mb-6">
-          <Link
-            to="/"
-            className="text-purple-600 font-medium hover:text-purple-800 transition-colors flex items-center"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
-            </svg>
-            Back to Home
-          </Link>
+      <header className="bg-purple-100 shadow-sm py-4 px-6">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <button onClick={() => navigate('/')} className="flex items-center text-purple-700 hover:text-purple-900">
+            <ArrowLeftIcon className="h-5 w-5 mr-2" />
+            <span>Back to Home</span>
+          </button>
+          <div className="flex items-center">
+            <HeartPulseIcon className="h-6 w-6 text-rose-600 mr-2" />
+            <h1 className="text-xl font-bold text-purple-800">Networking</h1>
+          </div>
+          <div className="w-24"></div>
         </div>
+      </header>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
 
         {/* Page Header */}
         <h2 className="text-3xl font-bold text-gray-900 text-center">
